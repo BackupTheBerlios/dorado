@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+<header>
+<title>Developer-Guide</title>
+<abstract>Wenn Sie als Entwickler zu diesem Projekt etwas beitragen wollen oder nur mit den aktuellsten Sourcen arbeiten wollen, so müssen Sie das Projekt aus unserem CVS-Repository auschecken. Dies und weitere Hinweise gibt dieser Artikel.</abstract>
+<meta name="keywords">dorado tomcat installation developer guide</meta>
+<meta name="description">Eine Anleitung für Entwickler, die mit den Sourcen arbeiten wollen</meta>
+<meta name="author">Thorsten Kamann</meta>
+</header>
+<body>
+<section id="N67079">
+<title>Systemvoraussetzungen</title>
+<p>Um mit dem Dorado-Projekt arbeiten zu können ist nicht viel erforderlich. Fehlende Komponenten werden automatisch bei der Initialisierung geladen. Sie müssen nur folgende Komponenten installiert haben:</p>
+<ul>
+<li>
+    <p>Ein <a class="fork" href="http://java.sun.com/" title="JAVA SDK 1.4">JAVA SDK 1.4</a> oder grösser (empfohlen ist ein JAVA5-SDK)</p>
+   </li>
+<li>
+    <p>
+<a class="fork" href="http://ant.apache.org/" title="Apache Ant">Ant</a> in einer aktuellen Version (empfohlen ist 1.6.5)</p>
+   </li>
+<li>
+    <p>
+<a class="fork" href="http://forrest.apache.org/" title="Apache Forrest">Apache Forrest</a> (Version 0.7; siehe auch die Anleitung etwas weiter unten)</p>
+   </li>
+<li>
+    <p>
+<a class="fork" href="http://eclipse.org/" title="Eclipse 3.1">Eclipse 3.1</a> (optional)</p>
+   </li>
+</ul>
+<p/>
+<p/>
+</section>
+<section id="N67155">
+<title>CVS-Repository auschecken</title>
+<p>Wenn Sie alle Systemvoraussetzungen erfüllt haben, können Sie die Projektsourcen aus dem CVS-Repository auschecken. Unter Windows können Sie dazu TortoiseCVS benutzen. Unter Linux benutzen Sie einfach den CVS-Kommandozeilenclient.</p>
+<p>Um mit dem CVS-Repository Kontakt aufzunehmen, benutzen Sie diese Daten:</p>
+<p>
+<strong>Host:</strong> <em>cvs.dorado.berlios.de</em>
+</p>
+<p>Repository:<em> </em>
+<em>/cvsroot/dorado</em>
+</p>
+<p>Benutzer:<em> </em>
+<em>anonymous</em>
+</p>
+<p>Servertyp:<em> pserver</em>
+</p>
+<p>
+<em/>
+</p>
+<p>
+<em>Mit dem CVS-Client für Linux sähe der Aufruf so aus:</em>
+</p>
+<source>
+<em>cvs -d:pserver:anonymous@cvs.dorado.berlios.de:/cvsroot/dorado login<br/>cvs -z3 -d:pserver:anonymous@cvs.dorado.berlios.de:/cvsroot/dorado co .</em>
+</source>
+<p/>
+<p/>
+</section>
+<section id="N67244">
+<title>Lokales Repository initialisieren</title>
+<p>Nachdem der Checkout erfolgreich abgeschlossen worden ist, müssen Sie Ihr lokales Repository noch initialisieren. Dabei werden benötigte Bibliotheken aus dem Internet geladen und in Ihr lokales Repository gespeichert.</p>
+<p>Dazu wechseln Sie in das Verzeichnis <code>ROOT</code>:</p>
+<source>cd ROOT</source>
+<p/>
+<p>Dort rufen Sie das Target <code>-init-repository</code> in der <code>build.xml</code> aus:</p>
+<source>ant -init-repository</source>
+<p/>
+<p>Dieser Vorgang dauert eine Weile. Nachdem er beendet wurde können Sie das Projekt erstellen:</p>
+<source>ant dist</source>
+<p/>
+<p>Danach finden Sie unter dem neu erstellten Verzeichnis <code>dist</code> die beiden Installer. Die Dokumentation finden Sie unter <code>build/documentation/build/site</code>.</p>
+<p/>
+<p/>
+</section>
+<section id="N67316">
+<title>Aufbau des Projekts</title>
+<p>Unser Projekt ist modular aufgebaut. D.h. es besteht aus mehreren Subprojekten, die sogenannten Module:</p>
+<p>DORADO</p>
+<p>|----ROOT (enthält übergeordnete Dateien)</p>
+<p>|----core (enthält die Dateien für die Installer)</p>
+<p>|----documentation (enthält die Dokumentationsdateien)</p>
+<p/>
+<p>Zusätzlich zu diesen Modulen erzeugen die Build-Skripte noch zusätzlich Verzeichnisse:</p>
+<ul>
+<li>
+    <p>
+<strong>build</strong>
+<br/>Hier werden die Dateien für den Buildprozess hinein kopiert.</p>
+   </li>
+<li>
+    <p>
+<strong>dist</strong>
+<br/>Hier finden Sie die Dateien, die für die Distribution veröffentlicht werden</p>
+   </li>
+<li>
+    <p>
+<strong>temp</strong>
+<br/>Temporäre Dateien</p>
+   </li>
+<li>
+    <p>
+<strong>repository</strong>
+<br/>Enthält die zusätzlichen Bibliotheken, die das Target -init-repository lädt.</p>
+   </li>
+</ul>
+<p/>
+<p/>
+</section>
+<section id="N67402">
+<title>Installation von Apache Forrest</title>
+<p>Wir benutzen Apache Forrest als Dokumentationsframework. Falls Sie dies nicht bei sich installiert haben, müssen Sie dies noch vor dem ersten build tun. Das ist mit wenigen Schritten getan:</p>
+<ul>
+<li>
+    <p>Download des aktuellen Apache Forrest Release<br/>Windows: <a class="fork" href="http://apache.easy-webs.de/forrest/apache-forrest-0.7.zip" title="">http://apache.easy-webs.de/forrest/</a>
+<a class="fork" href="http://apache.easy-webs.de/forrest/apache-forrest-0.7.zip" title="">apache</a>
+<a class="fork" href="http://apache.easy-webs.de/forrest/apache-forrest-0.7.zip" title="">-forrest-0.7.zip</a>
+<br/>Linux: <a class="fork" href="http://apache.easy-webs.de/forrest/apache-forrest-0.7.tar.gz" title="">http://apache.easy-webs.de/forrest/</a>
+<a class="fork" href="http://apache.easy-webs.de/forrest/apache-forrest-0.7.tar.gz" title="">apache</a>
+<a class="fork" href="http://apache.easy-webs.de/forrest/apache-forrest-0.7.tar.gz" title="">-forrest-0.7.tar.gz</a>
+</p>
+   </li>
+<li>
+    <p>Entpacken des Archivs in ein beliebiges Verzeichnis</p>
+   </li>
+<li>
+    <p>Falls Sie das Dorado-Projekt bisher noch nicht ausgecheckt haben, dann müssen Sie das jetzt tun.</p>
+   </li>
+<li>
+    <p>Jetzt öffnen Sie die Properties-Datei ROOT/project_local.properties. Falls diese Datei nicht existiert können Sie die mit einem einfachen Texteditor erstellen.</p>
+   </li>
+<li>
+    <p>Tragen Sie die folgende Zeile in diese Datei ein:<br/>forrest.home=PFAD_ZUR_FORREST_INSTALLATION</p>
+   </li>
+<li>
+    <p>Jetzt können Sie das Projekt erstellen:<br/>ant -f ROOT/build.xml</p>
+   </li>
+</ul>
+</section>
+</body>
+</document>

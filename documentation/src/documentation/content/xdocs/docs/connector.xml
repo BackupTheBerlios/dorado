@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+<header>
+<title>Tomcat-Connector</title>
+<abstract>Tomcat soll meistens nicht als vollwertiger Webserver verwendet werden (obwohl dies ohne weiteres möglich ist), sondern nur im Hintergrund arbeiten. Dazu muss der vorhandene Webserver mit dem Tomcat verbunden werden. Wie das geht beschreibt dieser Artikel.</abstract>
+<meta name="keywords">webserver dorado tomcat installation jk mod_jk iis apache</meta>
+<meta name="description">Anbindung des Tomcats an einen Webserver</meta>
+<meta name="author">Thorsten Kamann</meta>
+</header>
+<body>
+<section id="N66620">
+<title>Einführung</title>
+<p>Der Tomcat-Connector besteht aus 2 Einzelbestandteilen. Ein teil ist in Java geschrieben und ist bereits in Tomcat integriert. Der andere Teil ist in C geschrieben und stellt die Verbindung zwischen dem Webserver und Tomcat her.</p>
+<p>Auf Linux/Unix- Systemen muss der C-Teil kompiliert werden. Auf Win32-Systemen existieren schon fertige Binaries. Den Kompiliervorgang stösst das Installationsskript an. Sie müssen nur sicherstellen, dass ein GCC-Compiler und Utomake vorhanden sind.</p>
+</section>
+<section id="N66633">
+<title>Apache2 unter Linux</title>
+<p>Das Installationsscript finden Sie unter <code>$DORADO_INSTALL_DIR/installer/tomcat-connector/bin/install-jk-apache2-unix.sh</code>. Sie brauchen dieses Skript einfach nur ausführen: </p>
+<source>&gt;cd $DORADO_INSTALL_DIR/installer/tomcat-connector/bin<br/>&gt;./install-jk-apache2-unix.sh </source>
+<p/>
+<p>Nach Beendigung des Skripts können Sie die Beispielanwendungen von Tomcat auch ohne Portangabe aufrufen: </p>
+<p>
+<strong>http://localhost/jsp-examples</strong> </p>
+<p>
+<strong>http://localhost/servlet-examples</strong> </p>
+<p/>
+<p>Für die Deinstallation rufen Sie einfach das Uninstall-Skript auf: </p>
+<source>&gt;cd $DORADO_INSTALL_DIR/installer/tomcat-connector/bin<br/>&gt;./uninstall-jk-apache2-unix.sh </source>
+<p/>
+</section>
+<section id="N66689">
+<title>Apache2 unter Win32</title>
+<p>Für den Apache2-Webserver unter Win32 geht es ähnlich einfach. Hier muss auch nichts kompiliert werden:</p>
+<source>&gt;cd %DORADO_INSTALL_DIR%\installer\tomcat-connector\bin<br/>&gt;install-jk-apache2-win32.bat</source>
+<p/>
+<p>Auch hier sind die Beispielanwendungen dann ohne Portangabe erreichbar:</p>
+<p>
+<strong>http://localhost/jsp-examples</strong> <br/>
+<strong>http://localhost/servlet-examples</strong>
+</p>
+<p/>
+<p>
+Die Deinstallation funktioniert auch wie für den Apache2 unter Linux:
+</p>
+<source>
+&gt;cd %DORADO_INSTALL_DIR%\installer\tomcat-connector\bin<br/>&gt;install-jk-apache2-win32.bat
+</source>
+<p/>
+</section>
+<section id="N66751">
+<title>IIS unter WIN32</title>
+<p>Für den Internet-Information-Server gibt es ebenfalls ein Installationsscript:</p>
+<source>&gt;cd %DORADO_INSTALL_DIR%\installer\tomcat-connector\bin<br/>&gt;install-jk-iis.bat</source>
+<p/>
+<p>Auch hier sind die Beispielanwendungen dann ohne Portangabe erreichbar:</p>
+<p>
+<strong>http://localhost/jsp-examples</strong> <br/>
+<strong>http://localhost/servlet-examples</strong>
+</p>
+<p/>
+<p>
+Die Deinstallation funktioniert auch wie für den Apache2:
+</p>
+<source>
+&gt;cd %DORADO_INSTALL_DIR%\installer\tomcat-connector\bin<br/>&gt;install-jk-iis.bat
+</source>
+<p/>
+<p>
+Sie können auch eine Servernummer angeben, in den der Connector installiert werden soll:
+</p>
+<source>&gt;install-jk-iis.bat [servernummer]</source>
+<p/>
+<p>Wenn Sie den Connector in alle Virtuellen Hosts eintragen wollen geben Sie als Servernummer entweder <code>0</code> oder <code>all</code> an:
+</p>
+<source>&gt;install-jk-iis.bat [0|all]</source>
+<p/>
+<p>Dies können Sie auch bei der Deinstallation verwenden. Sie können das Installationsscript so oft
+wie nötig aufrufen. Vorhandene Konfigurationen werden automatisch aktualisiert.</p>
+</section>
+</body>
+</document>
