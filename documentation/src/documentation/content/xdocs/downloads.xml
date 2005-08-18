@@ -124,6 +124,11 @@
 				zugreifen:
 			</p>
 			<source>cvs	-d:pserver:anonymous@cvs.dorado.berlios.de:/cvsroot/dorado login<br />cvs -z3 -d:pserver:anonymous@cvs.dorado.berlios.de:/cvsroot/dorado co .</source>
+			<p>
+			Beachten Sie hier auch unseren 
+			<a class="fork" href="docs/dev-guide.html" title="Develoepr Guide">
+			Developer-Guide</a>
+			</p>
 		</section>
 	</body>
 </document>
