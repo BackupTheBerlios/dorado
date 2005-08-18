@@ -34,11 +34,6 @@
     			<include name="status.xml"/>
     		</fileset>
     	</copy>
-    	<copy todir="${project.build.dir}/${module.name}/src/documentation/content/xdocs">
-    		<fileset dir="${module.name}/ext-docs">
-    			<include name="images/**"/>
-    		</fileset>
-    	</copy>
     </target>
 	
 	<!-- ================================= 
