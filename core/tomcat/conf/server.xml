@@ -18,6 +18,14 @@
       		<Realm 
       			className="org.apache.catalina.realm.UserDatabaseRealm"
 				resourceName="UserDatabase" />
+			<Valve 
+				className="org.apache.catalina.valves.AccessLogValve"
+				directory="logs/Catalina/localhost"
+				prefix="access." 
+				suffix=".log"
+				pattern="common" 
+				resolveHosts="false"
+			/>
       		<Host 
       			name="localhost" 
       			appBase="webapps"/>
