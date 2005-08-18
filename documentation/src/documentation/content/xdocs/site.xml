@@ -42,11 +42,16 @@
    			<console-installer label="Konsolen-Installer"
    				href="console-installer.html"
    				description="Anleitung zum Konsolen-Installer"/>
-   				
+   			<connector label="Tomcat-Connector"
+   				href="connector.html"
+   				description="Installation des Tomcat-Connector"/>   				
    			<properties label="Properties Referenz"
    				href="properties.html"
    				description="Referenz aller Konfigurationseinstellungen"/>
    		</installation>
+   		<dev-guide label="Developer Guide"
+   			href="dev-guide.html"
+   			description="Anleitung für Entwickler"/>
    </docs>
    
   
