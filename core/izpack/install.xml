@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<installation version="1.0">
+    <info>
+        <appname>Dorado</appname>
+        <appversion>@project.version@</appversion>
+        <authors>
+            <author name="Thorsten Kamann" 
+            	email="thorsten.kamann@planetes.de"/>
+        </authors>
+        <url>http://dorado.berlios.de</url>
+        <uninstaller write="no"/>
+    </info>
+
+	<variables>
+  		<variable name="version" 
+  			value="@project.version@"/>
+  		<variable name="tomcat_version" 
+  			value="@project.tomcat.version@"/>
+  	</variables>
+    
+    <guiprefs width="640" height="480" resizable="no">
+    	<laf name="looks">
+    		<os family="windows"/>
+        	<param name="variant" value="extwin"/>
+    	</laf>
+    	<laf name="looks">
+    		<os family="mac"/>
+    		<os family="unix"/>
+    		<param name="variant" value="plastic3D"/>
+    	</laf>
+    </guiprefs>
+
+    <locale>
+        <langpack iso3="deu"/>
+    </locale>
+
+    <resources>
+    	<res id="userInputLang.xml_deu" src="i18n/deu.xml"/>
+        <res id="LicencePanel.licence" src="licence.txt"/>
+        <res id="InfoPanel.info" src="readme.txt"/>
+        <res id="TargetPanel.dir.unix" src="res/target.unix.res"/>
+        <res id="TargetPanel.dir.windows" src="res/target.windows.res"/>
+        <res id="TargetPanel.dir.mac" src="res/target.mac.res"/>
+        <res id="userInputSpec.xml" src="input.xml"/>
+        <res id="ProcessPanel.Spec.xml" src="process.xml"/>
+    </resources>
+    
+    <panels>
+        <panel classname="HelloPanel"/>
+        <panel classname="InfoPanel"/>
+        <panel classname="LicencePanel"/>
+        <panel classname="TargetPanel"/> 
+        <panel classname="UserInputPanel"/>
+        <panel classname="UserInputPanel"/>
+        <panel classname="InstallPanel"/>
+        <panel classname="ProcessPanel"/>
+        <panel classname="SimpleFinishPanel"/>
+    </panels>
+    
+    <packs>
+        <pack name="Installer Files" required="yes">
+            <description>The base files</description>
+            <fileset dir="../bin" targetdir="$INSTALL_PATH/installer/bin">
+            	<include name="**"/>
+            </fileset>
+            <fileset dir="../conf" targetdir="$INSTALL_PATH/installer/conf">
+            	<include name="**"/>
+            </fileset>
+            <fileset dir="logs" targetdir="$INSTALL_PATH/installer/logs">
+            	<include name="**"/>
+            </fileset>
+            <file src="dorado.izpack.properties" 
+            	targetdir="$INSTALL_PATH/installer/conf"/>
+            <file src="readme.txt" targetdir="$INSTALL_PATH"/>
+            <file src="licence.txt" targetdir="$INSTALL_PATH"/>
+            <executable targetfile="$INSTALL_PATH/installer/bin/dorado-installer.sh" 
+            	stage="never" keep="true"/>
+            <executable targetfile="$INSTALL_PATH/installer/bin/dorado-uninstaller.sh" 
+            	stage="never" keep="true"/>
+            <parsable targetfile="$INSTALL_PATH/installer/conf/dorado.izpack.properties"
+            	type="javaprop"/>
+        </pack>
+        <pack name="Ant Files" required="yes">
+        	<description>The Ant files</description>
+        	<fileset dir="../ant" targetdir="$INSTALL_PATH/installer/ant">
+        		<include name="**"/>
+        	</fileset>
+        	<executable targetfile="$INSTALL_PATH/installer/ant/bin/ant" 
+            	stage="never" keep="true"/>
+            <executable targetfile="$INSTALL_PATH/installer/ant/bin/antRun" 
+            	stage="never" keep="true"/>
+        </pack>
+        <pack name="Tomcat 5.5 Files" required="yes">
+        	<description>The Tomcat 5.5 files</description>
+        	<fileset dir="../tomcat" targetdir="$INSTALL_PATH/installer/tomcat">
+        		<include name="**"/>
+        	</fileset>
+        </pack>
+        <pack name="Tomcat-Connector Files" required="yes">
+        	<description>The Tomcat-Connector files</description>
+        	<fileset dir="../tomcat-connector" 
+        		targetdir="$INSTALL_PATH/installer/tomcat-connector">
+        		<include name="**"/>
+        	</fileset>
+        	<executable targetfile="$INSTALL_PATH/installer/tomcat-connector/bin/install-jk-apache2-unix.sh" 
+            	stage="never" keep="true"/>
+        	<executable targetfile="$INSTALL_PATH/installer/tomcat-connector/bin/uninstall-jk-apache2-unix.sh" 
+            	stage="never" keep="true"/>
+        </pack>
+        <pack name="Wrapper Files" required="yes">
+        	<description>The Wrapper files</description>
+        	<fileset dir="../wrapper" targetdir="$INSTALL_PATH/installer/wrapper">
+        		<include name="**"/>
+        	</fileset>
+        </pack>
+    </packs>
+    
+</installation>

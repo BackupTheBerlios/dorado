@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<processing>
+	<logfiledir>$INSTALL_PATH/installer/logs</logfiledir>
+	<job name="Installation-Tasks">
+		<os family="unix" />
+		<executefile name="$INSTALL_PATH/installer/bin/dorado-installer.sh">
+			<arg>$JAVA_HOME</arg>
+		</executefile>
+	</job>
+	
+	<job name="Installation-Tasks">		
+		<os family="mac" />
+		<executefile name="$INSTALL_PATH/installer/bin/dorado-installer.sh">
+			<arg>$JAVA_HOME</arg>
+		</executefile>
+	</job>
+		
+	<job name="Installation-Tasks">
+		<os family="windows" />
+		<executefile name="$INSTALL_PATH/installer/bin/dorado-installer.bat">
+			<arg>$JAVA_HOME</arg>
+		</executefile>
+	</job>
+</processing>

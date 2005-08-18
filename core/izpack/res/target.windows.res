@@ -1,0 +1,1 @@
+${ENV[ProgramFiles]}\dorado\$version

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<langpack>
+	<str id="panel0.title" 
+		txt="Einstellungen (Seite 1/2)"/>
+	<str id="panel0.field1.description">
+Dorado installiert den Tomcat mit aktiviertem Base-verzeichnis. D.h. 
+Sie können mehrere Konfigurationsprofile paralell auf der gleichen
+Codebasis verwenden. Den Namen für das Profil geben Sie hier ein.
+	</str>
+	<str id="panel0.field1.label"
+		txt="Profilname:"/>
+	<str id="panel0.field2.description">
+Geben Sie hier das Minimum und Maximum des verübgaren Speichers an, 
+die der Tomcat nutzen darf.
+	</str>
+	<str id="panel0.field2.label"
+		txt="Min:"/>
+	<str id="panel0.field3.label"
+		txt="Max:"/>
+	<str id="panel0.field4.description">
+Wählen Sie hier den Account aus, unter dem der Tomcat ausgeführt werden soll.
+	</str>
+	<str id="panel0.field4.label"
+		txt="Benutzeraccount:"/>
+		
+	<str id="panel1.title" 
+		txt="Einstellungen (Seite 2/2)"/>
+	<str id="panel1.field1.description">
+Geben Sie hier den Benutzernamen und Passwort für den Adminaccount an, mit
+dem Sie sich in die HostManager-Anwendung einloggen können.
+	</str>
+	<str id="panel1.field1.label"
+		txt="Benutzername:"/>
+	<str id="panel1.field2.label"
+		txt="Passwort:"/>
+	<str id="panel1.field3.description">
+Geben Sie hier den Benutzernamen und Passwort für den Manageraccount an, mit
+dem Sie sich in die Manager-Anwendung einloggen können.
+	</str>
+	<str id="panel1.field3.label"
+		txt="Benutzername:"/>
+	<str id="panel1.field4.label"
+		txt="Passwort:"/>
+	<str id="panel1.field5.description">
+Geben Sie hier den Port an, auf dem Tomcat die HTTP-Anfragen beantworten 
+soll.
+	</str>
+	<str id="panel1.field5.label"
+		txt="HTTP-Port:"/>
+		
+	<str id="port.validator" 
+		txt="Der Port wird bereits benutzt. Wählen Sie einen anderen Port."/>
+</langpack>

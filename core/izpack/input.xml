@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<userInput>
+	<panel order="0">
+		<field type="title" 
+			id="panel0.title" 
+			size="1" 
+			bold="true"/>
+		<field type="rule" 
+			variable="dorado_tomcat_profile_name">
+			<description id="panel0.field1.description"/>
+  			<spec id="panel0.field1.label" 
+  				set="0:default" 
+  				layout="O:30:255"/>
+		</field>
+		<space/>
+		<field type="rule" 
+			variable="dorado_memory_min">
+			<description id="panel0.field2.description"/>
+  			<spec id="panel0.field2.label" 
+  				set="0:64" 
+  				layout="N:10:4 MB"/>
+		</field>
+		<field type="rule" 
+			variable="dorado_memory_max">
+  			<spec id="panel0.field3.label" 
+  				set="0:128" 
+  				layout="N:10:4 MB"/>
+		</field>
+		<field type="combo" 
+			variable="dorado_tomcat_user">
+			<os family="unix"/>
+  			<description id="panel0.field4.description"/>
+  			<spec id="panel0.field4.label">
+  				<choice 
+  					processor="com.izforge.izpack.util.UnixUserProcessor" 
+  					set="$USER_NAME"/>
+			</spec>
+		</field>
+	</panel>
+	
+	<panel order="1">
+		<field type="title" 
+			id="panel1.title" 
+			size="1" 
+			bold="true"/>
+		<field type="rule" 
+			variable="dorado_admin_name">
+			<description id="panel1.field1.description"/>
+  			<spec id="panel1.field1.label" 
+  				set="0:admin" 
+  				layout="O:20:20"/>
+		</field>
+		<field type="rule" 
+			variable="dorado_admin_password">
+  			<spec id="panel1.field2.label" 
+  				set="0:admin" 
+  				layout="O:20:20"/>
+		</field>
+		<space/>
+		<field type="rule" 
+			variable="dorado_manager_name">
+			<description id="panel1.field3.description"/>
+  			<spec id="panel1.field3.label" 
+  				set="0:manager" 
+  				layout="O:20:20"/>
+		</field>
+		<field type="rule" 
+			variable="dorado_manager_password">
+  			<spec id="panel1.field4.label" 
+  				set="0:manager" 
+  				layout="O:20:20"/>
+		</field>
+		<space/>
+		<field type="rule" 
+			variable="dorado_http_port">
+			<description id="panel1.field5.description"/>
+  			<spec id="panel1.field5.label" 
+  				set="0:8080:com.izforge.izpack.util.PortProcessor" 
+  				layout="N:5:5"/>
+  			<validator 
+  				class="com.izforge.izpack.util.PortValidator" 
+  				txt="port.validator"/>	
+		</field>		
+	</panel>
+</userInput>

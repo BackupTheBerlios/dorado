@@ -1,0 +1,239 @@
+
+<!DOCTYPE project [
+	<!ENTITY common-targets SYSTEM "file:../ROOT/common-targets.ent">
+]>
+		
+<project
+	name="Dorado-Core"
+	basedir=".."
+	default="dist">
+	
+	<property name="module.name" value="core"/>
+	<property file="${module.name}/project_local.properties"/>
+	<property file="${module.name}/project.properties"/>
+	<property file="ROOT/project_local.properties"/>
+	<property file="ROOT/project.properties"/>
+	
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: -init                      
+         - - - - - - - - - - - - - - - - - -->
+    <target 
+    	name="-init"
+    	depends="-create_directory_layout">
+    	<mkdir dir="${project.build.dir}/izpack/logs"/>
+    	<mkdir dir="${project.build.dir}/tomcat"/>
+    	<mkdir dir="${project.build.dir}/tomcat-connector/lib"/>
+    	<mkdir dir="${project.build.dir}/ant"/>
+    	<mkdir dir="${project.temp.dir}/${module.name}"/>
+    	
+    	<copy todir="${project.build.dir}">
+    		<fileset dir="${module.name}">
+    			<include name="bin/**"/>
+    			<include name="conf/**"/>
+    			<include name="licence.txt"/>
+    			<include name="readme.txt"/>
+    		</fileset>
+    	</copy>
+    	
+    	<copy todir="${project.build.dir}/ant"
+    		overwrite="true">
+    		<fileset dir="${project.repository.dir}/ant/ant-${project.ant.version}">
+    			<include name="**"/>
+    		</fileset>
+    	</copy>    	
+    	<copy todir="${project.build.dir}/ant/lib"
+    	   	overwrite="true">
+    		<fileset dir="${project.repository.dir}">
+    	   		<include name="xmltask.jar"/>
+    	    </fileset>
+    	</copy>
+    	<copy todir="${project.build.dir}/ant"
+			overwrite="true">
+    		<fileset dir="${module.name}/ant">
+    			<include name="**"/>
+    		</fileset>
+    	</copy>
+    	
+    	<copy todir="${project.build.dir}/tomcat"
+    		overwrite="true">
+    		<fileset dir="${project.repository.dir}/tomcat/jakarta-tomcat-${project.tomcat.version}">
+    			<include name="**"/>
+    		</fileset>
+    	</copy>
+    	<copy todir="${project.build.dir}/tomcat"
+    	    overwrite="true">
+    		<fileset dir="${module.name}/tomcat">
+    			<include name="**"/>
+    		</fileset>
+    	</copy>
+    	
+    	<copy todir="${project.build.dir}/tomcat-connector"
+    		overwrite="true">
+    	    <fileset dir="${project.repository.dir}/tomcat-connector/jakarta-tomcat-connectors-${project.tomcat.connector.version}-src">
+    	    	<include name="**"/>
+    	    </fileset>
+    	</copy>
+    	<copy todir="${project.build.dir}/tomcat-connector"
+    		overwrite="true">
+    		<fileset dir="${module.name}/tomcat-connector">
+				<include name="**"/>
+			</fileset>
+    	</copy>
+    	<copy todir="${project.build.dir}/tomcat-connector/lib">
+    		<fileset dir="${project.repository.dir}/tomcat-connector/jakarta-tomcat-connectors-${project.tomcat.connector.version}-bin/">
+    	    	<include name="isapi_redirect.dll"/>
+    			<include name="mod_jk.so"/>
+    	    </fileset>
+    	</copy>
+    	
+    	<copy todir="${project.build.dir}/wrapper"
+    		overwrite="true">
+    		<fileset dir="${project.repository.dir}/wrapper/wrapper-${project.wrapper.version}">
+    			<include name="**"/>
+    		</fileset>
+    	</copy>
+    	<copy todir="${project.build.dir}/wrapper"
+    	    overwrite="true">
+    		<fileset dir="${module.name}/wrapper">
+    			<include name="**"/>
+    		</fileset>
+    	</copy>
+    	
+    	<echoproperties 
+    		destfile="${project.temp.dir}/${module.name}/build.properties" 
+    		format="text" 
+    		failonerror="true"/>
+    	<filterset id="izpack-filter">
+    		<filtersfile file="${project.temp.dir}/${module.name}/build.properties"/>
+    	</filterset>
+    	<copy todir="${project.build.dir}/izpack" 
+    		filtering="true">
+    		<filterset refid="izpack-filter"/>
+    		<fileset dir="${module.name}/izpack">
+    			<include name="*.xml"/>
+    			<include name="dorado.izpack.properties"/>
+    			<include name="i18n/**"/>
+    			<include name="res/**"/>
+    		</fileset>
+    		<fileset dir="${module.name}">
+    			<include name="conf/*.izpack.*"/>
+    			<include name="licence.txt"/>
+    			<include name="readme.txt"/>
+    		</fileset>
+    	</copy>
+    	
+    	<fixcrlf 
+    	   	srcdir="${project.build.dir}"
+    	    eol="unix"
+    	    includes="tomcat-connector/**"
+    		excludes="tomcat-connector/lib/**"/>
+    	<fixcrlf 
+    		srcdir="${project.build.dir}"
+    		eol="dos"
+    		includes="**/*.bat"/>	
+    	<fixcrlf 
+    		srcdir="${project.build.dir}"
+    		eol="unix"
+    		includes="**/*.sh"/>
+    </target>
+
+	
+	
+    <!-- ================================= 
+          target: build              
+         ================================= -->
+    <target name="build" 
+    	depends="-init" 
+    	description="--> Builds the project">
+        
+    </target>
+
+	
+	
+    <!-- ================================= 
+          target: dist              
+         ================================= -->
+    <target name="dist" 
+    	depends="build, -build-console-installer, -build-gui-installer" 
+    	description="--> Makes the dist">
+        
+    	
+    	
+    </target>
+
+
+	
+    <!-- ================================= 
+          target: clean              
+         ================================= -->
+    <target name="clean" 
+    	description="--> Cleans all generated resourcen">
+        
+    </target>
+
+
+	
+	
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: -build-gui-installer                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="-build-gui-installer">
+		<description>
+    		Buids the graphical installer
+    	</description>  
+    	
+    	<taskdef name="izpack" 
+    		classpath="${izpack.home}/lib/compiler.jar"
+    		classname="com.izforge.izpack.ant.IzPackTask"/>
+    	
+    	<izpack input="${project.build.dir}/izpack/install.xml"
+    	        output="${project.dist.dir}/dorado-gui-${project.version}-installer.jar"
+    	        installerType="standard"
+    	        basedir="${project.build.dir}/izpack"
+    	        izPackDir="${izpack.home}/"/>
+    </target>
+
+
+	
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: -build-console-installer                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="-build-console-installer">
+    	<description>
+    		Builds the console installer
+    	</description>    
+
+    	<zip destfile="${project.dist.dir}/dorado-console-${project.version}-installer.zip"
+    		compress="true" 
+    		update="true">   		
+    		<zipfileset dir="${project.build.dir}"
+    			prefix="dorado/installer">
+    			<include name="bin/**"/>
+    			<include name="conf/**"/>
+    			<include name="wrapper/**"/>
+    			<include name="logs/**"/>
+    			<include name="tomcat/**"/>
+    			<include name="tomcat-connector/**"/>
+    			<include name="ant/**"/>
+    			<exclude name="ant/bin/ant"/>
+    			<exclude name="ant/bin/antRun"/>
+    			<exclude name="bin/*.sh"/>
+    		</zipfileset>  
+    		<zipfileset dir="${project.build.dir}"
+    		    prefix="dorado">
+    			<include name="licence.txt"/>
+    			<include name="readme.txt"/>
+    		</zipfileset>
+    		<zipfileset  dir="${project.build.dir}" 
+    			filemode="755"
+    			prefix="dorado/installer">
+    			<include name="bin/*.sh"/>
+    			<include name="ant/bin/ant"/>
+    			<include name="ant/bin/antRun"/>
+    		</zipfileset> 
+    	</zip>
+    </target>
+
+
+	&common-targets;
+</project>
