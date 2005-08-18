@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+<header>
+<title>Der Konsolen-Installer</title>
+<abstract/>
+<meta name="keywords">Anleitung zum text-basierten Installer</meta>
+<meta name="description">Anleitung zum text-basierten Installer</meta>
+<meta name="author"/>
+</header>
+<body>
+<section id="N66605">
+<title>Text-basiertes Installationsprogramm</title>
+<p>Damit Sie den Dorado-Installer auch auf Servern ohne grafische Umgebung verwenden können gibt es den Konsolen-Installer.</p>
+<p>Die Einstellungen für die Installation befinden sich in einer externen <code>Properties-Datei</code>. Diese müssen Sie vor der Installation anpassen. Danach starten Sie den eigentlichen Installationsprozess.</p>
+<p/>
+</section>
+<section id="N66625">
+<title>Schritt-für-Schritt</title>
+<p>Hier erläutern wir die notwendigen Schritte, um Tomcat auf einem typischen Root-Server mit einem Linux-OS zu installieren. Dazu setzen wir voraus, dass die JAVA5-JRE bereits installiert ist und über den Aufruf <code>java</code> erreichbar ist.</p>
+<p/>
+<source>&gt;su<br/>&gt;Password: --&gt;Geben Sie hier Ihr ROOT-Passwort ein<br/>&gt;mkdir -p /root/downloads<br/>&gt;cd /root/downloads<br/>&gt;wget {DOWNLOAD_URL}/dorado-console-1.0.zip<br/>&gt;mkdir -p /opt/dorado<br/>&gt;cd /opt/dorado<br/>&gt;tar -xzf /root/downloads/dorado-console-1.0.zip<br/>&gt;cd 1.0/installer/conf<br/>&gt;vi dorado.properties --&gt; Jetzt können Sie die Einstellungen bearbeiten<br/>&gt;cd ../bin<br/>&gt;./dorado-installer.sh</source>
+<p/>
+<p>Jetzt startet der Console-Installer und installiert Tomcat, integriert ihn ins System und startet ihn. Über<br/>
+<code>/etc/init.d/tomcat_service start|stop|restart|status</code> können Sie den Tomcat steuern.</p>
+</section>
+</body>
+</document>

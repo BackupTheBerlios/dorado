@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE status 
+	PUBLIC "-//APACHE//DTD Status V1.3//EN" 
+	"http://forrest.apache.org/dtd/status-v13.dtd">
+	
+<status>
+
+  <developers>
+    <person name="Thorsten Kamann" 
+    	email="thorsten.kamann@planetes.de" 
+    	id="thorque"/>
+  </developers>
+
+	<contexts>
+		<context id="tomcat" 
+			title="Tomcat-Base"/>
+		<context id="wrapper" 
+			title="Java Service-Wrapper"/>
+		<context id="jk"
+			title="Tomcat-Connector"/>
+		<context id="installer"
+			title="Core Installer"/>
+		<context id="misc"
+			title="Misc"/>
+	</contexts>
+
+	<changes>
+		<release version="1.0-pre" date="never released">
+			<action dev="thorque"
+				context="installer"
+				type="add">
+				Adding Tomcat Version 5.5.10-alpha
+			</action>
+			<action dev="thorque"
+				context="installer"
+				type="add">
+				Adding Tomcat-Connector 1.2.4
+			</action>
+			<action dev="thorque"
+				context="installer"
+				type="add">
+				Adding Java Service-Wrapper 3.1.4
+			</action>
+			<action dev="thorque"
+				context="installer"
+				type="add">
+				Initial configuration; adding installer and Tomcat-Connector 
+				scripts
+			</action>
+		</release>
+	</changes>
+	
+	<todo>
+		<actions>
+			<action importance="high" 
+				context="installer"
+				type="add"
+				dev="thorque">
+				Better support for multiple tomcat-profiles
+			</action>
+			<action importance="high" 
+				context="installer"
+				type="add"
+				dev="thorque">
+				Configuration for cluster support
+			</action>
+		</actions>
+	</todo>
+
+</status>

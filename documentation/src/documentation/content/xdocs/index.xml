@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+<header>
+<title>Das Dorado-Projekt</title>
+<abstract/>
+<meta name="keywords">Übersicht über das Dorado-Projekt</meta>
+<meta name="description">Übersicht über das Dorado-Projekt</meta>
+<meta name="author"/>
+</header>
+<body>
+<section id="N66941">
+<title>Über das Dorado-Projekt</title>
+<p>Das Dorado-Projekt ist ein Installationsprogramm für den Apache Tomcat Servlet-Container. Er übernimmt die Systemintegration und bietet darüber hinaus auch ein Installations-Skript, damit ein Webserver mit dem Tomcat verbunden werden kann.</p>
+<p/>
+<p>Einen Tomcat-Server zu installieren ist kein Problem. Danach fängt die Arbeit allerdings erst an. Der Tomcat soll auch mit dem Start von Windows gestartet werden und falls es Probleme mit der JVM gibt soll ein automatischer Restart des Tomcat-Server erfolgen.<br/>Darüberhinaus wäre es auch chic den vorhandenen Webserver mit dem Tomcat zu verbinden, so dass die Java-Webanwendungen ohne die lästige Portangabe aufgerufen werden kann.</p>
+<p>Alles das bietet der Dorado-Installer:</p>
+<ul>
+<li>
+    <p>die aktuellste verfügbare Tomcat-Version (zur Zeit 5.5.10)</p>
+   </li>
+<li>
+    <p>Systemintegration mit dem <a class="fork" href="http://wrapper.sourceforge.net/" title="Java Service-Wrapper">Java Service-Wrapper</a> </p>
+   </li>
+<li>
+    <p>optionale Anbindung des vorhandenen Webservers an den Tomcat-Server</p>
+   </li>
+<li>
+    <p>aufgeräumtes Verzeichnislayout</p>
+   </li>
+<li>
+    <p>Möglichkeit mehrere Konfigurationsprofile parallel zu starten</p>
+   </li>
+</ul>
+<p/>
+<p/>
+</section>
+<section id="N67016">
+<title>Aktuelle Neuigkeiten</title>
+<section id="N67021">
+<title>August 2005</title>
+<ul>
+<li>
+    <p>Dorado 1.0 veröffentlicht [<a href="downloads.html" title="Download Dorado-Installer Version 1.0">Download</a>]<br/>Das erste Final-Release ist fertig. In diesem Release sind schon alle Basis Features vorhanden. Es basiert noch auf dem Tomcat 5.5.10-alpha. Sobald die fertige 5.5.10 veröffentlicht wird, wird auch der Dorado-Installer aktualisiert.<br/>- <a href="changes.html" title="Changelog">Changelog</a> </p>
+   </li>
+</ul>
+</section>
+<section id="N67059">
+<title>Juli 2005</title>
+<ul>
+<li>
+    <p>Tomcat 5.5.10-alpha veröffentlicht [<a class="fork" href="http://apache.easy-webs.de/jakarta/tomcat-5/v5.5.10-alpha/" title="Download Tomcat 5.5.10-alpha">Download</a>]<br/>Die Alpha-Version des kommenden 5.5.10-Releases des Tomcats wurde veröffentlicht. Viele kleinere Fehler wurden behoben und der Cluster-Support weiter verbessert.<br/>- <a class="fork" href="http://jakarta.apache.org/tomcat/tomcat-5.5-doc/changelog.html" title="Tomcat Changelog">Changelog</a> <br/>- <a class="fork" href="http://apache.engram.de/jakarta/tomcat-5/v5.5.10-alpha/RELEASE-NOTES" title="Tomcat Release Notes">Release Notes</a> </p>
+   </li>
+<li>
+    <p>JK-Connector 1.2.14 veröffentlicht [<a class="fork" href="http://apache.easy-webs.de/jakarta/tomcat-connectors/jk/" title="Download JK-Connector 1.2.14">Download</a>] </p>
+   </li>
+</ul>
+<p/>
+</section>
+</section>
+</body>
+</document>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+<header>
+<title>Das grafische Installationsprogramm</title>
+<abstract/>
+<meta name="keywords">installation tomcat dorado grafisch</meta>
+<meta name="description">Die Installation mit dem grafischen Installer</meta>
+</header>
+<body>
+<section id="N66681">
+<title>Grafisches Installationprogramm</title>
+<p>Eine Installation, die viele Parameter benötigt kann man oftmals besser mit einem grafischen Installationsprogramm durchführen als auf der Konsole.</p>
+<p>Aus diesem Grund haben wir uns entschlossen dem Dorado-Installer einen grafischen Installer zu spendieren. Dieser Installer läuft sowohl auf Windows als auch auf Linux.</p>
+<p>Der Installer führt Sie dialog-gesteuert durch den Installationsprozess. Nach dem Abfragen der benötigten Informationen wird der Konsolen-Installer ausgeführt.</p>
+<p>Den Fortschritt dieses Prozesses können Sie verfolgen. Nach der Installation sind keine Nacharbeiten mehr erforderlich.</p>
+<p/>
+<note>Bitte bedenken Sie, dass die Systemintegration Administrations-/ROOT-Rechte benötigen.<br/>Aus diesem Grund ist es ratsam den Installer unter einem entsprechenden Account auszuführen.<br/>
+<br/>Unter Linux ist es möglich, den Tomcat-Server ohne die Systemintergation auszuführen. Win32-Systeme brauchen die Intergration, ansonsten kann der Tomcat nicht gestartet werden.</note>
+<p/>
+</section>
+<section id="N66717">
+<title>Schritt-für-Schritt</title>
+<table>
+<tr>
+<th>
+<p>Screenshot</p>
+</th>
+<th>
+<p>Beschreibung</p>
+</th>
+</tr>
+<tr>
+<td>
+     <p>
+<img src="../images/installer/thumbs/001.png" alt="Grafik1"/>
+</p>
+    </td>
+<td>
+     <p>Dies ist der Startbildschirm des Installationsprogramm. Hier finden Sie nur einige Informationen über den Dorado-Installer.</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>
+<img src="../images/installer/thumbs/002.png" alt="Grafik2"/>
+</p>
+    </td>
+<td>
+     <p>Dies ist die aktuelle ReadMe-Datei. Dort finden Sie eine kurze Beschreibung ähnlich wie auf unserer <a href="../index.html" title="Startseite">Startseite</a> .</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>
+<img src="../images/installer/thumbs/003.png" alt="Grafik3"/>
+</p>
+    </td>
+<td>
+     <p>Die Lizenz unter der wir den Dorado-Installer veröffentlichen. Da dies eine sehr einfache Lizenz ist, brauchen Sie die nur durchlesen und bestätigen.</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>
+<img src="../images/installer/thumbs/004.png" alt="Grafik4"/>
+</p>
+    </td>
+<td>
+     <p>Hier können Sie ein Verzeichnis auswählen, in das die notwendigen Dateien hineinkopiert werden. In dem Unterverzeichnis <code>tomcat</code> wird dann der Tomcat-Server installiert.</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>
+<img src="../images/installer/thumbs/005.png" alt="Grafik5"/>
+</p>
+    </td>
+<td>
+     <p>Dies ist der erste Seite, auf der Sie die Installation konfigurieren können. Sie können ohne weiteres die Standardwerte übernehmen.</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>
+<img src="../images/installer/thumbs/006.png" alt="Grafik6"/>
+</p>
+    </td>
+<td>
+     <p>Die zweite Seite für Ihre Einstellungen.</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>
+<img src="../images/installer/thumbs/007.png" alt="Grafik7"/>
+</p>
+    </td>
+<td>
+     <p>Die Dateien werden kopiert. Dieser Vorgang kann – je nach Leistungsfähigkeit Ihres Servers/Rechners – mehrere Minuten in Anspruch nehmen.</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>
+<img src="../images/installer/thumbs/008.png" alt="Grafik8"/>
+</p>
+    </td>
+<td>
+     <p>Jetzt wird der Konsolen-Installer , der ja in diesen grafischen Installer integriert ist, ausgeführt. </p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>
+<img src="../images/installer/thumbs/009.png" alt="Grafik9"/>
+</p>
+    </td>
+<td>
+     <p>Der Konsolen-Installer hat seine Tasks erfolgreich beendet. Nun ist die Installation erfolgreich abgeschlossen. Der Tomcat wurde bereits gestartet und ist über <code>http://localhost:8080</code> erreichbar.</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>
+<img src="../images/installer/thumbs/010.png" alt="Grafik10"/>
+</p>
+    </td>
+<td>
+     <p>Der abschliessende Screen. Mit einem Klick auf <strong>Fertig</strong> beenden Sie das Installationsprogramm.</p>
+    </td>
+</tr>
+</table>
+<p/>
+</section>
+</body>
+</document>

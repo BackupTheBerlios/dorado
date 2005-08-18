@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+<header>
+<title>Dokumentation (Übersicht)</title>
+<abstract/>
+<meta name="keywords">Übersicht über die Dokumentation des Dorado-Projekts</meta>
+<meta name="description">Übersicht über die Dokumentation des Dorado-Projekts</meta>
+<meta name="author">Thorsten Kamann</meta>
+</header>
+<body>
+<section id="N66725">
+<title>Übersicht</title>
+<p>Auf diesen Seiten finden Sie die Dokumentation des Dorado-Installers. Dies dient auch als Referenz zu den verschiedenen Konfigurationsdateien, die während des Installationsprozess verwendet werden.</p>
+<p/>
+<p>Auch wenn der eigentlich Vorgang der Installation relativ einfach und selbserklärend ist leiten wir Sie mithilfe einer Installationsanleitung durch diesen Prozess.</p>
+<p/>
+</section>
+<section id="N66744">
+<title>Schnellstart</title>
+<p>Wenn Sie schnell mit dem Dorado starten wollen ohne lange Dokumentationen lesen zu müssen führen Sie die folgenden Schritte durch:</p>
+<ol>
+<li>
+    <p>Laden Sie sich das aktuelle Dorado Release von unserer <a href="../downloads.html" title="Downloads">Download-Seite</a> .</p>
+   </li>
+<li>
+    <p>Führen Sie den Installer aus. Folgen Sie dabei den Anweisungen des Installationsprogramms.</p>
+   </li>
+<li>
+    <p>Nach erfolgreichem Beenden des Installers können Sie Ihren Tomcat-Server über die Adresse <code>http://localhost:8080</code> erreichen.</p>
+   </li>
+<li>
+    <p>Optional können Sie jetzt noch den Tomcat-Connector installieren, um Ihren Webserver mit Tomcat zu installieren.</p>
+   </li>
+</ol>
+</section>
+</body>
+</document>

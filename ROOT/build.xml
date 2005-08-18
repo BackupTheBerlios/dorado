@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project [
+	<!ENTITY common-targets SYSTEM "file:../ROOT/common-targets.ent">
+]>
+
+<project
+	name="Dorado"
+	basedir=".."
+	default="dist">
+
+	<property name="module.name" value="ROOT"/>
+	<property file="${module.name}/project_local.properties"/>
+	<property file="${module.name}/project.properties"/>
+	
+    <!-- ================================= 
+          target: build              
+         ================================= -->
+    <target 
+    	name="build" 
+    	depends="-init" 
+    	description="--> Builds the project">
+        
+    </target>
+	
+	
+	
+    <!-- ================================= 
+          target: dist              
+         ================================= -->
+    <target 
+    	name="dist" 
+    	depends="build" 
+    	description="--> Builds the distribution">
+        
+    	<ant antfile="core/build.xml"
+    		target="dist"
+    		inheritall="false"
+    		inheritrefs="false"/>
+    	
+    	<ant antfile="documentation/build.xml"
+    	    target="dist"
+    	    inheritall="false"
+    	    inheritrefs="false"/>
+    	
+    </target>
+	
+	
+    <!-- ================================= 
+          target: clean              
+         ================================= -->
+    <target name="clean" 
+    	depends="-clean-directory-layout"
+    	description="--> Cleans all generated resourcen">
+        
+    </target>
+
+	
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: -init                      
+         - - - - - - - - - - - - - - - - - -->
+    <target 
+    	name="-init"
+    	depends="-create_directory_layout">
+            
+    	
+    </target>
+	
+	
+	
+    <!-- ================================= 
+          target: publish-website              
+         ================================= -->
+    <target name="publish-website" 
+    	description="--> Publishs the website to the remote webserver">
+        
+    	<available file="${user.home}/.ssh/id_dsa.pub" 
+    		property="ssh.keyfile" 
+    		value="${user.home}/.ssh/id_dsa.pub"/>
+    	
+    	<available file="${user.home}/.ssh/id_dsa" 
+    		property="ssh.keyfile" 
+    		value="${user.home}/.ssh/id_dsa"/>
+    		
+		<sshexec 
+			host="shell.berlios.de"
+			username="${ssh.user}"
+			keyfile="${ssh.keyfile}"
+			passphrase="${ssh.passphrase}"
+			command="rm -Rf /home/groups/dorado/htdocs/*.*"
+			failonerror="false"
+			trust="true"
+		/>
+    		
+		<scp
+			todir="${ssh.user}@shell.berlios.de:/home/groups/dorado/htdocs" 
+       		keyfile="${ssh.keyfile}"
+       		passphrase="${ssh.passphrase}"
+			trust="true">
+  			<fileset dir="${project.build.dir}/documentation/build/site"/>
+  		</scp>
+    	
+    </target>
+
+
+	
+    <!-- ================================= 
+          target: publish-dist              
+         ================================= -->
+    <target name="publish-dist" 
+    	description="--> Publishs the distribution">
+        
+    	<ftp server="ftp.berlios.de"
+    		remotedir="incoming"
+   			userid="anonymous"
+    	    password="me@myorg.com"
+    		verbose="yes">
+    	    <fileset dir="${project.dist.dir}">
+    	    	<include name="*.zip"/>
+    			<include name="*.jar"/>
+    	    </fileset>
+    	  </ftp>
+    </target>
+
+
+	
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: init-repository                      
+         - - - - - - - - - - - - - - - - - -->
+    <target 
+    	name="init-repository"
+    	depends="-create_directory_layout, -depedencies"
+    	description="--> Resolves all depedencies">
+            
+    	<!-- Remove some useless files out of the current
+    		tomcat repository -->
+    	<delete includeemptydirs="true">
+    		<fileset dir="${project.repository.dir}/tomcat/jakarta-tomcat-${project.tomcat.version}">
+    			<include name="bin/commons-daemon.jar"/>
+    			<include name="bin/jsvc.tar.gz"/>
+    			<include name="bin/*.exe"/>
+    			<include name="bin/*.bat"/>
+    			<include name="bin/*.sh"/>
+    			<include name="conf/jk2.*"/>
+    			<include name="conf/tomcat-jk2.*"/>
+    			<include name="conf/workers2.*"/>
+    			<include name="conf/workers.*"/>
+    			<include name="conf/uriworkermap.*"/>
+    		</fileset>
+    	</delete>
+    	
+    	<mkdir dir="${project.repository.dir}/tomcat-connector/jakarta-tomcat-connectors-${project.tomcat.connector.version}-bin"/>
+    	<get
+    		src="http://apache.easy-webs.de/jakarta/tomcat-connectors/jk/binaries/win32/jk-${project.tomcat.connector.version}/isapi_redirect-${project.tomcat.connector.version}.dll"
+    		dest="${project.repository.dir}/tomcat-connector/jakarta-tomcat-connectors-${project.tomcat.connector.version}-bin/isapi_redirect.dll"
+    		verbose="true"/>
+    	<get
+    		src="http://apache.easy-webs.de/jakarta/tomcat-connectors/jk/binaries/win32/jk-${project.tomcat.connector.version}/mod_jk-${project.tomcat.connector.version}-apache-2.0.54.so"
+    		dest="${project.repository.dir}/tomcat-connector/jakarta-tomcat-connectors-${project.tomcat.connector.version}-bin/mod_jk.so"
+    		verbose="true"/>
+    	
+    	<get 
+    		src="http://mesh.dl.sourceforge.net/sourceforge/xmltask/xmltask-v1.11.jar"
+    		dest="${project.repository.dir}/xmltask.jar"
+    		verbose="true"/>
+    	
+    	<cvs 
+    		cvsRoot=":pserver:anonymous@cvs.izpack.berlios.de:/cvsroot/izpack"
+    	    package="izpack-src"
+    	    dest="${project.repository.dir}/izpack"/>
+    	<ant antfile="${project.repository.dir}/izpack/izpack-src/src/build.xml"
+    		target="dist"
+    		inheritall="false"
+    		inheritrefs="false"/>
+    </target>
+
+
+	
+    <!-- ================================= 
+          target: update-repository              
+         ================================= -->
+    <target 
+    	name="update-repository" 
+    	depends="init-repository" 
+    	description="--> Updates this repository">
+        
+    </target>
+
+
+
+	&common-targets;
+</project>

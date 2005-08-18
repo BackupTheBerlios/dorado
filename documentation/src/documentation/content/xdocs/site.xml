@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<site label="Dorado" 
+	href="" 
+	xmlns="http://apache.org/forrest/linkmap/1.0" 
+	tab="home">
+   <about label="Projekt" tab="home">
+	<overview label="Übersicht"
+		href="index.html"
+		description="Übersicht über das Dorado-Projekt"/>
+   	
+	<changes label="Changelog" 
+  		href="changes.html" 
+   		description="Das Changelog des Dorado-Projekts"/>
+   	
+	<todo 
+		label="Todo-Liste" 
+		href="todo.html" 
+		description="Was noch zu tun ist"/>
+		
+	<downloads
+		label="Downloads"
+		href="downloads.html"
+		description="Downloads"/>
+		
+	<developers
+		label="Entwickler"
+		href="developers.html"
+		description="Die am Projekt beteiligten Enwickler"/>
+   </about>
+   
+   <docs label="Dokumentation" href="docs/" tab="docs">
+   		<index label="Übersicht"
+   			href="index.html"
+   			description="Übersicht"/>
+   		
+   		<installation label="Installation"
+   			description="Installationsanleitungen">
+   			<gui-installer label="Grafischer Installer"
+   				href="gui-installer.html"
+   				description="Anleitung zum Grafischen-Installer"/>
+   			<console-installer label="Konsolen-Installer"
+   				href="console-installer.html"
+   				description="Anleitung zum Konsolen-Installer"/>
+   				
+   			<properties label="Properties Referenz"
+   				href="properties.html"
+   				description="Referenz aller Konfigurationseinstellungen"/>
+   		</installation>
+   </docs>
+   
+  
+  <!--
+  The href must be wholesite.html/pdf  You can change the labels and node names
+  <all label="All">
+    <whole_site_html label="Whole Site HTML" href="wholesite.html"/>
+    <whole_site_pdf label="Whole Site PDF" href="wholesite.pdf"/>
+  </all>
+  -->
+
+  <external-refs>
+    <forrest href="http://forrest.apache.org/">
+      <linking href="docs/linking.html"/>
+      <validation href="docs/validation.html"/>
+      <webapp href="docs/your-project.html#webapp"/>
+      <dtd-docs href="docs/dtd-docs.html"/>
+    </forrest>
+    <cocoon href="http://cocoon.apache.org/"/>
+    <xml.apache.org href="http://xml.apache.org/"/>
+  </external-refs>
+
+</site>

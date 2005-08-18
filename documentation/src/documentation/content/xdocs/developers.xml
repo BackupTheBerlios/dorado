@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+<header>
+<title>Projektmitglieder</title>
+<abstract/>
+<meta name="keywords">Vorstellung der Projektmitglieder</meta>
+<meta name="description">Vorstellung der Projektmitglieder</meta>
+<meta name="author"/>
+</header>
+<body>
+<section id="N66770">
+<title>Projektmitglieder</title>
+<p/>
+<table>
+<tr>
+<th colspan="2">
+      <p>Thorsten Kamann</p>
+     </th>
+</tr>
+<tr>
+<td>
+     <p>
+<img src="images/tk.jpg" alt="Grafik2"/> </p>
+    </td>
+<td>
+     <p>Projektadministrator, Hauptentwickler</p>
+     <ul>
+<li>
+       <p>
+<strong>Webseite:</strong> <a class="fork" href="http://personal.planetes.de/thorsten.kamann" title="">http://personal.planetes.de/thorsten.kamann</a> </p>
+      </li>
+<li>
+       <p>
+<strong>Email:</strong> <a href="mailto:thorsten.kamann@planetes.de" title="">thorsten.kamann@planetes.de</a> </p>
+      </li>
+</ul>
+     <p>
+<em>Mein</em> Know-How umfasst den ganzen Entwicklungsprozess eines Projekts. Vom Design einer Anwendung über die eigentliche Entwicklung bis hin zu Testing und Deployment. <br/>Meine besondere Stärke liegt dabei in der Fähigkeit viele OpenSource-Produkte zu einem neuen Produkt zusammenzufügen. Daraus resultieren auch meine Kenntnisse der Komponenten der Apache Software Foundation, insbesonders die Komponenten, die für die Entwicklung von Webanwendungen in Frage kommen. Dazu gehört besonders das Tomcat-Projekt und die verwandten Projekte wie Struts, Jakarta-Commons und die XML-Komponenten (Xerces, Xalan, Cocoon, Forrest).</p>
+     <p>
+<br/> </p>
+    </td>
+</tr>
+</table>
+<p/>
+<p/>
+</section>
+</body>
+</document>

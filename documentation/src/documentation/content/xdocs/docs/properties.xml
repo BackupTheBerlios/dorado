@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+<header>
+<title>Properties Referenz</title>
+<abstract/>
+<meta name="keywords">Eine Referenz aller Konfigurationseinstellungen</meta>
+<meta name="description">Eine Referenz aller Konfigurationseinstellungen</meta>
+<meta name="author"/>
+</header>
+<body>
+<section id="N66683">
+<title>Konfigurationseinstellungen</title>
+<table>
+<tr>
+<th>
+<p>Name</p>
+</th>
+<th>
+<p>Default</p>
+</th>
+<th>
+<p>Beschreibung</p>
+</th>
+</tr>
+<tr>
+<td>
+     <p>dorado.name</p>
+    </td>
+<td>
+     <p>Tomcat Application Server Ver. 5.5</p>
+    </td>
+<td>
+     <p>Der Name des Tomcat-Servers.</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>dorado.description</p>
+    </td>
+<td>
+     <p>The JSP/Servlet-Container provided by the Apache Software Foundation</p>
+    </td>
+<td>
+     <p>Eine Beschreibung des Tomcat-Servers.</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>dorado.name.service</p>
+    </td>
+<td>
+     <p>tomcat5</p>
+    </td>
+<td>
+     <p>Ein eindeutiger Name. Wenn Sie mehrere Instanzen des Tomcats gleichzeitig starten wollen, braucht jede Instanz einen eindeutigen Namen.</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>dorado.tomcat.profile.name</p>
+    </td>
+<td>
+     <p>default</p>
+    </td>
+<td>
+     <p>Der Name des Profils, das installiert werden soll.</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>dorado.tomcat.user</p>
+    </td>
+<td>
+     <p>nobody</p>
+    </td>
+<td>
+     <p>Der Benutzeraccount unter dem der Tomcat ausgeführt werden soll. Diese Einstellung hat bei Win32-Systemen keine Auswirkung.</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>dorado.memory.min</p>
+    </td>
+<td>
+     <p>64</p>
+    </td>
+<td>
+     <p>Der Mindestwert an Arbeitsspeicher, den der Tomcat-Server verwenden darf.</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>dorado.memory.max</p>
+    </td>
+<td>
+     <p>128</p>
+    </td>
+<td>
+     <p>Der Maximalwert an Arbeitsspeicher, den der Tomcat-Server verwenden darf.</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>dorado.admin.name</p>
+    </td>
+<td>
+     <p>admin</p>
+    </td>
+<td>
+     <p>Der Benutzername für den Admin-Account. DIESEN WERT SOLLTEN SIE UNBEDINGT ÄNDERN!</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>dorado.admin.password</p>
+    </td>
+<td>
+     <p>admin</p>
+    </td>
+<td>
+     <p>Das Passwort für den Admin-Account. DIESEN WERT SOLLTEN SIE UNBEDINGT ÄNDERN!</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>dorado.manager.name</p>
+    </td>
+<td>
+     <p>manager</p>
+    </td>
+<td>
+     <p>Der Benutzername für den Manager-Account. DIESEN WERT SOLLTEN SIE UNBEDINGT ÄNDERN!</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>dorado.manager.password</p>
+    </td>
+<td>
+     <p>manager</p>
+    </td>
+<td>
+     <p>Das Passwort für den Manager-Account. DIESEN WERT SOLLTEN SIE UNBEDINGT ÄNDERN!</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>dorado.http.port</p>
+    </td>
+<td>
+     <p>8080</p>
+    </td>
+<td>
+     <p>Der Port auf dem der Tomcat mittels des integrierten HTTP-Konnektors antworten soll.</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>dorado.ajp.port</p>
+    </td>
+<td>
+     <p>8009</p>
+    </td>
+<td>
+     <p>Der Port, den der Tomcat für die Verbindung mit einem Webserver zur Verfügung stellt.</p>
+    </td>
+</tr>
+</table>
+<p/>
+</section>
+</body>
+</document>

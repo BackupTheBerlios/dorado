@@ -1,0 +1,106 @@
+<!-- Taskdefinitions of the ant-contrib tasks -->
+<taskdef resource="net/sf/antcontrib/antlib.xml">
+	<classpath>
+   		<pathelement location="ROOT/lib/ant-contrib.jar"/>
+	</classpath>
+</taskdef>
+
+
+<!-- ================================= 
+	target: -create_directory_layout              
+	================================= -->
+<target 
+	name="-create_directory_layout">
+	<description>
+		Creates the directory layout
+	</description>
+	
+	<mkdir dir="${project.build.dir}"/>
+    <mkdir dir="${project.temp.dir}"/>
+    <mkdir dir="${project.dist.dir}"/>
+	<mkdir dir="${project.repository.dir}"/>
+</target>
+
+<!-- ================================= 
+	target: -clean-directory-layout
+	================================= -->
+<target name="-clean-directory-layout" 
+	description="--> Cleans all generated resourcen">
+        
+	<delete includeemptydirs="true">
+    	<fileset dir="${project.build.dir}"/>
+    	<fileset dir="${project.temp.dir}"/>
+    	<fileset dir="${project.dist.dir}"/>
+    </delete>
+</target>
+
+<!-- - - - - - - - - - - - - - - - - - 
+     target: compile                      
+     - - - - - - - - - - - - - - - - - -->
+<target name="-compile">
+	<javac 
+    		destdir="${compile.dest}" 
+    		srcdir="${compile.src}"
+    		includes="**" 
+    		optimize="${javac.optimize}" 
+    		debug="${javac.debug}" 
+    		deprecation="${javac.deprecation}" 
+    		nowarn="${javac.nowarn}"
+    		encoding="${javac.encoding}"
+    		source="${javac.source}"	>
+    		<classpath refid="compile.classpath"/>
+    	</javac>
+</target>
+
+
+<!-- - - - - - - - - - - - - - - - - - 
+     target: packToJAR                      
+     - - - - - - - - - - - - - - - - - -->
+<target name="-packToJAR">
+	<jar 
+		destfile="${jar.dir}/${jar.name}"
+		index="true"
+		compress="true">
+    	<fileset dir="${compile.dest}"/>
+	</jar>
+</target>
+
+
+<!-- ================================= 
+	target: depedencies              
+	================================= -->
+<target 
+	name="-depedencies" 
+	description="--> Retrieves and extracts external archives">
+
+	<path id="depedenciesTask.classpath">
+		<fileset dir="ROOT/lib">
+			<include name="depedenciesmanager.jar" />
+		</fileset>
+	</path>
+	
+	<taskdef 
+		name="depedencies"
+	    classname="de.centaurus.ant.tasks.DepedenciesManagerTask"
+	    classpathref="depedenciesTask.classpath">
+	</taskdef>
+		
+	<mkdir dir="${project.temp.dir}/${module.name}"/>
+	<echoproperties 
+    	destfile="${project.temp.dir}/${module.name}/build.properties" 
+    	format="text" 
+    	failonerror="true"/>
+    <filterset id="depedency-filter">
+    	<filtersfile file="${project.temp.dir}/${module.name}/build.properties"/>
+    </filterset>
+	<copy tofile="${project.temp.dir}/${module.name}/depedency.xml"
+		file="${depedencies.config}"
+		overwrite="true"
+		filtering="true">
+		<filterset refid="depedency-filter"/>
+	</copy>
+
+	<depedencies 
+		depedenciesFile="${project.temp.dir}/${module.name}/depedency.xml"
+		tempdir="${java.io.tmpdir}/depedenciesmanager/dorado"/>
+</target>

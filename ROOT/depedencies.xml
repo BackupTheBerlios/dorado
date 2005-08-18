@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<depedencies>
+	<!--  Ant 1.6.x -->
+	<depedency
+		id="ant-1.6.x"
+		archive="http://apache.easy-webs.de/ant/binaries/apache-ant-@project.ant.version@-bin.zip"
+		version="@project.ant.version@"
+		baseTarget="repository/ant/ant-@project.ant.version@/lib">
+		<extract
+			name="apache-ant-@project.ant.version@/bin/**"
+			target="repository/ant/ant-@project.ant.version@/bin"/>
+		<extract
+			name="apache-ant-@project.ant.version@/lib/ant.jar"/>
+		<extract
+			name="apache-ant-@project.ant.version@/lib/ant-launcher.jar"/>
+		<extract
+			name="apache-ant-@project.ant.version@/lib/ant-nodeps.jar"/>
+	</depedency>
+	
+	<!--  Apache Tomcat 5.5 -->
+	<depedency 
+		id="tomcat5.5"
+		archive="http://apache.easy-webs.de/jakarta/tomcat-5/v@project.tomcat.version@-alpha/bin/jakarta-tomcat-@project.tomcat.version@.zip"
+		version="@project.tomcat.version@"
+		baseTarget="repository/tomcat">
+		<extract 
+			name="**"/>
+	</depedency>
+	
+	<!-- Apache Tomcat Connector -->
+	<depedency 
+		id="tomcat-connector"
+		archive="http://apache.easy-webs.de/jakarta/tomcat-connectors/jk/source/jakarta-tomcat-connectors-current-src.zip"
+		version=""
+		baseTarget="repository/tomcat-connector">
+		<extract name="**"/>
+	</depedency>
+	
+	<!-- Wrapper Linux -->
+	<depedency 
+		id="wrapper_linux"
+		archive="http://mesh.dl.sourceforge.net/sourceforge/wrapper/wrapper_linux_${version}.tar.gz"
+		version="@project.wrapper.version@"
+		baseTarget="repository/wrapper/linux">
+		<extract
+			name="wrapper_linux_@project.wrapper.version@/bin/wrapper"
+			target="repository/wrapper/wrapper-@project.wrapper.version@/linux/bin"
+			renameTo="wrapper.bin"/>
+		<extract
+			name="wrapper_linux_@project.wrapper.version@/lib/libwrapper.so"
+			target="repository/wrapper/wrapper-@project.wrapper.version@/linux/lib"/>
+		<extract
+			name="wrapper_linux_@project.wrapper.version@/lib/wrapper.jar"
+			target="repository/wrapper/wrapper-@project.wrapper.version@/linux/lib"/>
+	</depedency>
+	
+	<!-- Wrapper Solaris -->
+	<depedency 
+		id="wrapper_solaris"
+		archive="http://mesh.dl.sourceforge.net/sourceforge/wrapper/wrapper_solaris_@project.wrapper.version@.tar.gz"
+		version="@project.wrapper.version@"
+		baseTarget="repository/wrapper/solaris">
+		<extract
+			name="wrapper_solaris_@project.wrapper.version@/bin/wrapper"
+			target="repository/wrapper/wrapper-@project.wrapper.version@/solaris/bin"
+			renameTo="wrapper.bin"/>
+		<extract
+			name="wrapper_solaris_@project.wrapper.version@/lib/libwrapper.so"
+			target="repository/wrapper/wrapper-@project.wrapper.version@/solaris/lib"/>
+		<extract
+			name="wrapper_solaris_@project.wrapper.version@/lib/wrapper.jar"
+			target="repository/wrapper/wrapper-@project.wrapper.version@/solaris/lib"/>
+	</depedency>
+	
+	<!-- Wrapper Win32 -->
+	<depedency 
+		id="wrapper_win32"
+		archive="http://mesh.dl.sourceforge.net/sourceforge/wrapper/wrapper_win32_@project.wrapper.version@.zip"
+		version="@project.wrapper.version@"
+		baseTarget="repository/wrapper/win32">
+		<extract
+			name="wrapper_win32_@project.wrapper.version@/bin/wrapper.exe"
+			target="repository/wrapper/wrapper-@project.wrapper.version@/win32/bin"/>
+		<extract
+			name="wrapper_win32_@project.wrapper.version@/lib/wrapper.dll"
+			target="repository/wrapper/wrapper-@project.wrapper.version@/win32/lib"/>
+		<extract
+			name="wrapper_win32_@project.wrapper.version@/lib/wrapper.jar"
+			target="repository/wrapper/wrapper-@project.wrapper.version@/win32/lib"/>
+	</depedency>
+</depedencies>

@@ -1,0 +1,113 @@
+<project
+	name="Dorado-Docs"
+	basedir=".."
+	default="dist">
+	
+	<property name="module.name" value="documentation"/>
+	<property file="${module.name}/project_local.properties"/>
+	<property file="${module.name}/project.properties"/>
+	<property file="ROOT/project_local.properties"/>
+	<property file="ROOT/project.properties"/>
+	
+	<property name="project.build-dir" 
+		value="${project.build.dir}/documentation"/>
+	
+	<import file="../ROOT/common-targets.xml"/>
+	
+	<path id="ant.runtime.classpath">
+		<pathelement location="${forrest.home}/lib/core/xml-commons-resolver-1.1.jar"/>
+	</path>
+	
+	
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: -init                      
+         - - - - - - - - - - - - - - - - - -->
+    <target 
+    	name="-init"
+    	depends="-create_directory_layout">
+    	
+    	<mkdir dir="${project.build.dir}/${module.name}"/>
+    	<copy todir="${project.build.dir}/${module.name}">
+    		<fileset dir="${module.name}">
+    			<include name="src/**"/>
+    			<include name="forrest.properties"/>
+    			<include name="status.xml"/>
+    		</fileset>
+    	</copy>
+    	<copy todir="${project.build.dir}/${module.name}/src/documentation/content/xdocs">
+    		<fileset dir="${module.name}/ext-docs">
+    			<include name="images/**"/>
+    		</fileset>
+    	</copy>
+    </target>
+	
+	<!-- ================================= 
+          target: build              
+         ================================= -->
+    <target name="build" 
+    	depends="-init" 
+    	description="--> Builds the project">
+        
+    	<ant 
+    		antfile="${forrest.home}/main/forrest.build.xml"
+    		target="site"
+    		inheritall="false">
+    		<property name="basedir" 
+    			location="${project.build.dir}/${module.name}"/>
+    		<property name="forrest.home" 
+    		    location="${forrest.home}"/>
+    		<!--<property name="project.build-dir" 
+				location="${project.build.dir}/${module.name}"/>-->
+    	</ant>
+    	
+    </target>
+	
+	
+	<!-- ================================= 
+          target: build-test              
+         ================================= -->
+    <target name="build-test" 
+    	depends="-init" 
+    	description="--> Builds a test">
+        
+    	<ant 
+    		antfile="${forrest.home}/main/forrest.build.xml"
+    		target="webapp"
+    		inheritall="false">
+    		<property name="basedir" 
+    			location="${project.build.dir}/${module.name}"/>
+    		<property name="forrest.home" 
+    		    location="${forrest.home}"/>
+    	</ant>
+    	
+    </target>
+
+	
+	
+    <!-- ================================= 
+          target: dist              
+         ================================= -->
+    <target name="dist" 
+    	depends="build" 
+    	description="--> Makes the dist">
+        
+    	
+    	
+    </target>
+
+
+	
+    <!-- ================================= 
+          target: clean              
+         ================================= -->
+    <target name="clean" 
+    	description="--> Cleans all generated resourcen">
+        
+    	<delete includeemptydirs="true">
+    		<fileset dir="${project.build.dir}/${module.name}">
+    			<include name="**"/>
+    		</fileset>
+    	</delete>
+    </target>
+    
+</project>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+	<header>
+		<title>Downloads</title>
+		<abstract />
+		<meta name="keywords">Alle Downloads des Dorado-Projekts</meta>
+		<meta name="description">
+			Alle Downloads des Dorado-Projekts
+		</meta>
+		<meta name="author" />
+	</header>
+	<body>
+		<section id="N67165">
+			<title>Dorado-Installer v1.0</title>
+			<p>
+				Dies ist das zur Zeit aktuelle Release. Er beinhaltet
+				folgende Komponenten:
+			</p>
+			<ul>
+				<li>
+					<p>Tomcat 5.5.10-alpha</p>
+				</li>
+				<li>
+					<p>Tomcat-Connector 1.2.14</p>
+				</li>
+				<li>
+					<p>Java Service-Wrapper 3.1.4</p>
+				</li>
+			</ul>
+			<p />
+			<section id="N67202">
+				<title>
+					Dorado-Installer v1.0 für nicht grafische Systeme
+				</title>
+				<p>
+					Diesen Installer können Sie auf allen Systemen
+					verwenden. Er ist allerdings für Systeme gedacht, die
+					keine grafische Umgebung bieten. Dieser Installer muss
+					mittels einer Konfigurationsdatei vor der eigentlichen
+					Installation konfiguriert werden.
+				</p>
+				<p />
+				<ul>
+					<li>
+						<p>
+							<a
+								href="http://download.berlios.de/dorado/dorado-console-1.0-installer.zip"
+								title="Download den Konsolen-Installer">
+								Download
+							</a>
+						</p>
+					</li>
+					<li>
+						<p>
+							<a class="fork"
+								href="docs/console-installer.html"
+								title="Anleitung zum Konsolen-Installer">
+								Anleitung zum Konsolen-Installer
+							</a>
+						</p>
+					</li>
+				</ul>
+				<p />
+			</section>
+			<section id="N67250">
+				<title>
+					Dorado-Installer v1.0 für grafische Systeme
+				</title>
+				<p>
+					Diesen Installer können Sie auf allen Systemen
+					verwenden, die eine grafische Umgebung bieten. Das sind
+					in erster Linie Windows und Linux mit KDE oder Gnome.
+				</p>
+				<p />
+				<ul>
+					<li>
+						<p>
+							<a
+								href="http://download.berlios.de/dorado/dorado-gui-1.0-installer.jar"
+								title="Download grafischen Installer">
+								Download
+							</a>
+						</p>
+					</li>
+					<li>
+						<p>
+							<a class="fork" href="docs/gui-installer.html"
+								title="Anleitung zum grafischen Installer">
+								Anleitung zum grafischen Installer
+							</a>
+						</p>
+					</li>
+				</ul>
+				<p />
+			</section>
+		</section>
+		<section id="N67301">
+			<title>Nightly Tarball</title>
+			<p>
+				Jede Nacht wird ein tar.gz-Archiv des CVS-Repositories
+				erstellt. Dieses Archiv können Sie hier downloaden:
+			</p>
+			<ul>
+				<li>
+					<p>
+						<a
+							href="http://cvs.berlios.de/cvstarballs/dorado-cvsroot.tar.gz"
+							title="Nightly Tarball downloaden">
+							Nightly Tarball
+						</a>
+					</p>
+				</li>
+			</ul>
+			<p />
+			<p />
+		</section>
+		<section id="N67331">
+			<title>
+				CVS-Repository
+			</title>
+			<p>
+				Sie können natürlich auch auf unser CVS-Repsoitory
+				zugreifen:
+			</p>
+			<source>cvs	-d:pserver:anonymous@cvs.dorado.berlios.de:/cvsroot/dorado login<br />cvs -z3 -d:pserver:anonymous@cvs.dorado.berlios.de:/cvsroot/dorado co .</source>
+		</section>
+	</body>
+</document>
