@@ -48,6 +48,13 @@ soll.
 	</str>
 	<str id="panel1.field5.label"
 		txt="HTTP-Port:"/>
+	<str id="panel1.field6.description">
+Hier können Sie den Port angeben, mit dem Sie auf den MBeanServer
+des Tomcats zugreifen können. Geben Sie 0 ein, um diese Funktionalität 
+zu deaktivieren.
+	</str>
+	<str id="panel1.field6.label"
+		txt="JMX-Port:"/>
 		
 	<str id="port.validator" 
 		txt="Der Port wird bereits benutzt. Wählen Sie einen anderen Port."/>
