@@ -81,6 +81,17 @@
   			<validator 
   				class="com.izforge.izpack.util.PortValidator" 
   				txt="port.validator"/>	
+		</field>	
+		<space/>
+		<field type="rule" 
+			variable="dorado_jmx_port">
+			<description id="panel1.field6.description"/>
+  			<spec id="panel1.field6.label" 
+  				set="0:0:com.izforge.izpack.util.PortProcessor" 
+  				layout="N:5:5"/>
+  			<validator 
+  				class="com.izforge.izpack.util.PortValidator" 
+  				txt="port.validator"/>	
 		</field>		
 	</panel>
 </userInput>
