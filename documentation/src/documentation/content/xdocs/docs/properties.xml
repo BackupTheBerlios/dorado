@@ -166,6 +166,17 @@
      <p>Der Port, den der Tomcat für die Verbindung mit einem Webserver zur Verfügung stellt.</p>
     </td>
 </tr>
+<tr>
+<td>
+     <p>dorado.jmx.port</p>
+    </td>
+<td>
+     <p>0</p>
+    </td>
+<td>
+     <p>Der Port, mit dem Sie sich mit dem MBeanServer des Tomcats verbinden können.<br/>Der Wert <code>0</code> deaktiviert den Zugriff auf den MBeanServer.</p>
+    </td>
+</tr>
 </table>
 <p/>
 </section>
