@@ -26,7 +26,20 @@
 	</contexts>
 
 	<changes>
-		<release version="1.0-pre" date="never released">
+		<release version="1.0.1" date="Sept. 2005">
+			<action dev="thorque"
+				context="tomcat"
+				type="add">
+				Adding configuration for the JULI-Logger
+			</action>
+			<action dev="thorque"
+				context="tomcat"
+				type="add">
+				Adding configuration for access to the
+				MBeanServer
+			</action>			
+		</release>
+		<release version="1.0" date="08-21-2005">
 			<action dev="thorque"
 				context="installer"
 				type="add">
