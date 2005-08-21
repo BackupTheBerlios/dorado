@@ -40,6 +40,7 @@ case "$1" in
 		if [ "`id -un`" = "root" ]; then
 			chown -R $TOMCAT_USER $TOMCAT_DIR
 			chmod -R u+rw $TOMCAT_DIR
+			chmod og-rwx $TOMCAT_DIR/conf/jmxremote.password
 			su $TOMCAT_USER -c ''$TOMCAT_DIR'/bin/wrapper.sh start'
 		else
 			$TOMCAT_DIR/bin/wrapper.sh start
@@ -63,6 +64,7 @@ case "$1" in
 		if [ "`id -un`" = "root" ]; then
 			chown -R $TOMCAT_USER $TOMCAT_DIR
 			chmod -R u+rw $TOMCAT_DIR
+			chmod og-rwx $TOMCAT_DIR/conf/jmxremote.password
 			su $TOMCAT_USER -c ''$TOMCAT_DIR'/bin/wrapper.sh console'
 		else
 			$TOMCAT_DIR/bin/wrapper.sh console

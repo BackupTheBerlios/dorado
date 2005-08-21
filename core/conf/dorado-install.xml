@@ -49,6 +49,14 @@
     	   		<include name="*.sh"/>
 			</fileset>
     	</chmod>
+    	    	
+    	<chown file="${dorado.tomcat.base}/conf/jmxremote.password" 
+    		owner="${dorado.tomcat.user}"
+    		verbose="true"/>
+    	
+    	<chmod perm="go-rwx" 
+    	    verbose="true" 
+    		file="${dorado.tomcat.base}/conf/jmxremote.password"/>
     	
     	<antcall target="-install_service"/>
     	<antcall target="-start"/>
