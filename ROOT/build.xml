@@ -141,8 +141,16 @@
     			<include name="bin/*.exe"/>
     			<include name="bin/*.bat"/>
     			<include name="bin/*.sh"/>
+    			<include name="bin/jmxaccessor-tasks.xml"/>
     			<include name="conf/jk2.*"/>
     			<include name="conf/tomcat-jk2.*"/>
+    			<include name="conf/jkconf.*"/>
+    			<include name="conf/jkconfig.*"/>
+    			<include name="conf/shm.*"/>
+    			<include name="conf/catalina.properties"/>
+    			<include name="conf/logging.properties"/>
+    			<include name="conf/server.xml"/>
+    			<include name="conf/server-minimal.xml"/>
     			<include name="conf/workers2.*"/>
     			<include name="conf/workers.*"/>
     			<include name="conf/uriworkermap.*"/>
