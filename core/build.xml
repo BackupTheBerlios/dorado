@@ -98,6 +98,11 @@
     			<include name="**"/>
     		</fileset>
     	</copy>
+    	<copy todir="${project.build.dir}/wrapper/win32/bin">
+    		<fileset dir="${project.repository.dir}">
+    			<include name="SetACL.exe"/>
+    		</fileset>
+    	</copy>
     	
     	<echoproperties 
     		destfile="${project.temp.dir}/${module.name}/build.properties" 
@@ -234,6 +239,61 @@
     	</zip>
     </target>
 
+	
+	
+    <!-- ================================= 
+          target: test-launch-configuration-transformation              
+         ================================= -->
+    <target name="test-launch-configuration-transformation" 
+    	depends="-create_directory_layout"
+    	description="--> Tests the transformation of the launch-configuration">
+    	
+    	
+    	<xslt 
+			in="${module.name}/tomcat/conf/launch/launch-configuration.xml"
+    	    out="${project.temp.dir}/launch-configuration.properties"
+    	    style="${module.name}/tomcat/conf/launch/launch-configuration2wrapper.xsl"
+    		force="true">
+    		<param name="os" expression="win32"/>
+    	</xslt>
+        
+    </target>
+
+
+    <!-- ================================= 
+          target: test-logging-transformation              
+         ================================= -->
+    <target name="test-logging-transformation" 
+    	depends="-create_directory_layout"
+    	description="--> Tests the transformation of the logging.xml">
+    	
+    	
+    	<xslt 
+			in="${module.name}/tomcat/conf/logging/logging.xml"
+    	    out="${project.temp.dir}/logging.properties"
+    	    style="${module.name}/tomcat/conf/logging/logging2properties.xsl"
+    		force="true">
+    	</xslt>
+        
+    </target>	
+	
+	
+	<!-- ================================= 
+          target: test-server-properties-transformation              
+         ================================= -->
+    <target name="test-server-properties-transformation" 
+    	depends="-create_directory_layout"
+    	description="--> Tests the transformation of the server-properties.xml">
+    	
+    	
+    	<xslt 
+			in="${module.name}/tomcat/conf/server-properties.xml"
+    	    out="${project.temp.dir}/server-properties.properties"
+    	    style="${module.name}/tomcat/conf/launch/server-properties2properties.xsl"
+    		force="true">
+    	</xslt>
+        
+    </target>	
 
 	&common-targets;
 </project>
