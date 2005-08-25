@@ -49,6 +49,9 @@
    				href="properties.html"
    				description="Referenz aller Konfigurationseinstellungen"/>
    		</installation>
+   		<jmx label="Management"
+   			description="Zugriff auf den MBeanServer des Tomcats"
+   			href="jmx.html"/>
    		<dev-guide label="Developer Guide"
    			href="dev-guide.html"
    			description="Anleitung für Entwickler"/>
