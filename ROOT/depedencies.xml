@@ -16,6 +16,8 @@
 			name="apache-ant-@project.ant.version@/lib/ant-launcher.jar"/>
 		<extract
 			name="apache-ant-@project.ant.version@/lib/ant-nodeps.jar"/>
+		<extract
+			name="apache-ant-@project.ant.version@/lib/ant-trax.jar"/>
 	</depedency>
 	
 	<!--  Apache Tomcat 5.5 -->
@@ -88,5 +90,15 @@
 		<extract
 			name="wrapper_win32_@project.wrapper.version@/lib/wrapper.jar"
 			target="repository/wrapper/wrapper-@project.wrapper.version@/win32/lib"/>
+	</depedency>
+	
+	<!-- SetACL -->
+	<depedency 
+		id="setacl"
+		archive="http://mesh.dl.sourceforge.net/sourceforge/setacl/setacl-cmdline-${version}-binary.zip"
+		version="2.0.2.0"
+		baseTarget="repository">
+		<extract
+			name="SetACL.exe"/>
 	</depedency>
 </depedencies>
