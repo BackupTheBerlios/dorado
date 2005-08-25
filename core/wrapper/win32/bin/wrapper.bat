@@ -21,7 +21,7 @@ rem
 rem Find the wrapper.conf
 rem
 :conf
-set _WRAPPER_CONF="%_APP_HOME%\conf\wrapper.conf"
+set _WRAPPER_CONF="%_APP_HOME%\temp\launch\launch-configuration.properties"
 
 rem
 rem What must i do?

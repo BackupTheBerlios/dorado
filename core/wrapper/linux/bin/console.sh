@@ -53,4 +53,5 @@ while [ -h "$PRG" ]; do
 done
 PRGDIR=`dirname "$PRG"`
 
+$PRGDIR/ant.sh -f $PRGDIR/../conf/launch/launch.xml console
 $PRGDIR/wrapper.sh console

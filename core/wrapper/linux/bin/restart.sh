@@ -53,4 +53,5 @@ while [ -h "$PRG" ]; do
 done
 PRGDIR=`dirname "$PRG"`
 
-$PRGDIR/wrapper.sh restart
+$PRGDIR/stop.sh
+$PRGDIR/start.sh

@@ -40,15 +40,16 @@ REM THE POSSIBILITY OF SUCH DAMAGE.
 REM
 
 if "%OS%"=="Windows_NT" goto nt
-set _EXEC=wrapper.bat
+set _EXEC=ant.bat
 goto exec
 
 :nt
 setlocal
-set _EXEC=%~dp0\wrapper.bat
+set _BASEDIR=%~dp0
+set _EXEC=%_BASEDIR%\ant.bat
 goto exec
 
 :exec
-"%_EXEC%" stop
+"%_EXEC%" -f "%_BASEDIR%\..\conf\launch\launch.xml" stop
 
 :exit

@@ -40,15 +40,16 @@ REM THE POSSIBILITY OF SUCH DAMAGE.
 REM
 
 if "%OS%"=="Windows_NT" goto nt
-set _EXEC=wrapper.bat
+set _BASEDIR=.
 goto exec
 
 :nt
 setlocal
-set _EXEC=%~dp0\wrapper.bat
+set _BASEDIR=%~dp0
 goto exec
 
 :exec
-"%_EXEC%" restart
+call "%_BASEDIR%"\stop.bat
+call "%_BASEDIR%"\start.bat
 
 :exit

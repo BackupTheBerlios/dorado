@@ -18,7 +18,7 @@ APP_LONG_NAME="Tomcat Application Server Ver. 5.5"
 
 # Wrapper
 WRAPPER_CMD="./wrapper.bin"
-WRAPPER_CONF="../conf/wrapper.conf"
+WRAPPER_CONF="../temp/launch/launch-configuration.properties"
 
 # Priority at which to run the wrapper.  See "man nice" for valid priorities.
 #  nice is only used if a priority is specified.

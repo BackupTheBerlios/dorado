@@ -53,4 +53,4 @@ while [ -h "$PRG" ]; do
 done
 PRGDIR=`dirname "$PRG"`
 
-$PRGDIR/wrapper.sh start
+$PRGDIR/ant.sh -Dos.name=linux -f $PRGDIR/../conf/launch/launch.xml start
