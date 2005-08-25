@@ -1,5 +1,14 @@
 <Server port="8005" shutdown="SHUTDOWN">
 
+	<Listener 
+		className="org.apache.catalina.core.AprLifecycleListener" />
+	<Listener 
+		className="org.apache.catalina.mbeans.ServerLifecycleListener" />
+  	<Listener 
+  		className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener" />
+  	<Listener 
+  		className="org.apache.catalina.storeconfig.StoreConfigLifecycleListener"/>
+
   <GlobalNamingResources>
     <Resource 
     	name="UserDatabase" 
@@ -11,7 +20,36 @@
 	</GlobalNamingResources>
 
 	<Service name="Catalina">
-		<Connector port="@dorado.http.port@" />
+		<Connector 
+			acceptCount="100" 
+			connectionTimeout="20000" 
+			disableUploadTimeout="true" 
+			enableLookups="false" 
+			maxSpareThreads="75" 
+			maxThreads="150" 
+			minSpareThreads="25" 
+			port="@dorado.http.port@" 
+			redirectPort="@dorado.https.port@"
+			compression="on" 
+			compressionMinSize="2048" 
+			noCompressionUserAgents="gozilla, traviata" 
+			compressableMimeType="text/html,text/xml"/>	
+			
+		<Connector 
+			port="@dorado.https.port@" 
+			maxHttpHeaderSize="8192"
+			maxThreads="150" 
+			minSpareThreads="25" 
+			maxSpareThreads="75"
+			enableLookups="false" 
+			disableUploadTimeout="true"
+			acceptCount="100" 
+			scheme="https" 
+			secure="true" 
+			clientAuth="false" 
+			sslProtocol="TLS" 
+			keystoreFile="conf/.keystore"/>	
+		
 		<Engine 
 			name="Catalina" 
 			defaultHost="localhost">
