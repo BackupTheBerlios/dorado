@@ -81,7 +81,13 @@
   			<validator 
   				class="com.izforge.izpack.util.PortValidator" 
   				txt="port.validator"/>	
-		</field>	
+		</field>
+		<field type="rule" 
+			variable="dorado_https_port">
+  			<spec id="panel1.field5.1.label" 
+  				set="0:8443" 
+  				layout="N:5:5"/>	
+		</field>			
 		<space/>
 		<field type="rule" 
 			variable="dorado_jmx_port">
@@ -93,5 +99,49 @@
   				class="com.izforge.izpack.util.PortValidator" 
   				txt="port.validator"/>	
 		</field>		
+	</panel>
+	
+	<panel order="2">
+		<field type="title" 
+			id="panel2.title" 
+			size="1" 
+			bold="true"/>
+		<field type="rule" 
+			variable="dorado_key_cn">
+			<description id="panel2.field1.description"/>
+  			<spec id="panel2.field1.label" 
+  				set="0:Tomcat-Server" 
+  				layout="O:20:20"/>
+  		</field>
+  		<field type="rule" 
+			variable="dorado_key_ou">
+  			<spec id="panel2.field2.label" 
+  				set="0:Development-Section" 
+  				layout="O:20:20"/>
+  		</field>
+  		<field type="rule" 
+			variable="dorado_key_o">
+  			<spec id="panel2.field3.label" 
+  				set="0:Company-Name" 
+  				layout="O:20:20"/>
+  		</field>
+  		<field type="rule" 
+			variable="dorado_key_l">
+  			<spec id="panel2.field4.label" 
+  				set="0:City" 
+  				layout="O:20:20"/>
+  		</field>
+  		<field type="rule" 
+			variable="dorado_key_st">
+  			<spec id="panel2.field5.label" 
+  				set="0:State" 
+  				layout="O:20:20"/>
+  		</field>
+  		<field type="rule" 
+			variable="dorado_key_c">
+  			<spec id="panel2.field6.label" 
+  				set="0:DE" 
+  				layout="O:2:2"/>
+		</field>
 	</panel>
 </userInput>

@@ -24,6 +24,13 @@
 
     	<antcall target="-install-wrapper"/>
     	       
+    	<mkdir dir="${dorado.tomcat.home}/common/ant"/>
+    	<copy todir="${dorado.tomcat.home}/common/ant">
+    		<fileset dir="${basedir}/ant">
+    			<include name="**"/>
+    		</fileset>
+    	</copy>
+    	
     	<condition property="user.privileged">
     		<or>
     			<os family="dos"/>
@@ -48,6 +55,11 @@
     		<fileset dir="${basedir}/tomcat-connector/bin">
     	   		<include name="*.sh"/>
 			</fileset>
+    		<fileset dir="${dorado.tomcat.home}/common/ant/bin">
+    	   		<include name="*.sh"/>
+    			<include name="ant"/>
+    			<include name="antRun"/>
+			</fileset>
     	</chmod>
     	    	
     	<chown file="${dorado.tomcat.base}/conf/jmxremote.password" 
@@ -58,6 +70,7 @@
     	    verbose="true" 
     		file="${dorado.tomcat.base}/conf/jmxremote.password"/>
     	
+    	<antcall target="-generate-key"/>    	
     	<antcall target="-install_service"/>
     	<antcall target="-start"/>
     	
@@ -177,10 +190,14 @@ deleted.
 			<insert path="/Server/Service">
 				<![CDATA[
 				<Connector 
+		        	connectionTimeout="20000" 
+		        	maxSpareThreads="75" 
+					maxThreads="150" 
+					minSpareThreads="25"
+					enableLookups="false" 
 					port="${dorado.ajp.port}" 
-	               	enableLookups="false" 
-					redirectPort="8443" 
-					protocol="AJP/1.3" />
+					protocol="AJP/1.3" 
+					redirectPort="443"/>
 				]]>
 			</insert>
 		</xmltask>    	
@@ -248,10 +265,14 @@ deleted.
 			<insert path="/Server/Service">
 				<![CDATA[
 				<Connector 
+		        	connectionTimeout="20000" 
+		        	maxSpareThreads="75" 
+					maxThreads="150" 
+					minSpareThreads="25"
+					enableLookups="false" 
 					port="${dorado.ajp.port}" 
-	               	enableLookups="false" 
-					redirectPort="8443" 
-					protocol="AJP/1.3" />
+					protocol="AJP/1.3" 
+					redirectPort="443"/>
 				]]>
 			</insert>
 		</xmltask>  
@@ -433,8 +454,7 @@ deleted.
     	<property name="shell.ext" value="sh"/>
     	
     	<exec 
-    	   executable="${dorado.tomcat.base}/bin/wrapper.${shell.ext}">
-    	   <arg line="restart"/>
+    	   executable="${dorado.tomcat.base}/bin/restart.${shell.ext}">
     	</exec>
     </target>
 	
@@ -452,8 +472,7 @@ deleted.
     	<property name="shell.ext" value="sh"/>
     	
     	<exec 
-    	   executable="${dorado.tomcat.base}/bin/wrapper.${shell.ext}">
-    	   <arg line="stop"/>
+    	   executable="${dorado.tomcat.base}/bin/stop.${shell.ext}">
     	</exec>
     </target>
 
@@ -467,14 +486,13 @@ deleted.
     		Installs the service and starts the Tomcat
     	</description>            
     	
-    	<condition property="install.script" value="wrapper.bat">
-    	 	<os family="dos"/>
+    	<condition property="shell.ext" value="bat">
+    		<os family="dos"/>
     	</condition>
-    	<property name="install.script" value="tomcat_service.sh"/>
+    	<property name="shell.ext" value="sh"/>
     	
     	<exec 
-    		executable="${dorado.tomcat.base}/bin/${install.script}">
-    		<arg line="install"/>
+    		executable="${dorado.tomcat.base}/bin/install-service.${shell.ext}">
     	</exec>
     </target>
 	
@@ -486,14 +504,13 @@ deleted.
     		Installs the service and starts the Tomcat
     	</description>            
     	
-    	<condition property="install.script" value="wrapper.bat">
-    	 	<os family="dos"/>
+    	<condition property="shell.ext" value="bat">
+    		<os family="dos"/>
     	</condition>
-    	<property name="install.script" value="tomcat_service.sh"/>
+    	<property name="shell.ext" value="sh"/>
     	
     	<exec 
-    		executable="${dorado.tomcat.base}/bin/${install.script}">
-    		<arg line="uninstall"/>
+    		executable="${dorado.tomcat.base}/bin/uninstall-service.${shell.ext}">
     	</exec>
     </target>
 
@@ -525,16 +542,6 @@ deleted.
 			<fileset dir="wrapper/${platform.name}/${dorado.internal.wrapper.bin.dir}">
 				<exclude name="*.sh"/>
 				<exclude name="*.bat"/>
-			</fileset>
-		</copy>
-    	
-    	<copy 
-			todir="${dorado.tomcat.base}/conf"
-    		filtering="true"
-			overwrite="true">
-    		<filterset refid="properties"/>
-			<fileset dir="wrapper/${platform.name}/${dorado.internal.wrapper.conf.dir}">
-				<include name="*.*"/>
 			</fileset>
 		</copy>
     	
@@ -755,5 +762,25 @@ deleted.
     </target>
 
 	
+	
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: -generate-key                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="-generate-key">
+    	<genkey 
+    		alias="tomcat" 
+    		storepass="changeit"
+    		keystore="${dorado.tomcat.base}/conf/.keystore">
+    		<dname>
+    	    	<param name="CN" value="${dorado.key.cn}"/>
+    	    	<param name="OU" value="${dorado.key.ou}"/>
+    	    	<param name="O" value="${dorado.key.o}"/>
+    			<param name="L" value="${dorado.key.l}"/>
+    			<param name="ST" value="${dorado.key.st}"/>
+    	    	<param name="C" value="${dorado.key.c}"/>
+    	  	</dname>
+    	</genkey>
+    </target>
+
 
 </project>
