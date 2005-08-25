@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN" "http://forrest.apache.org/dtd/document-v20.dtd">
+<document>
+<header>
+<title>Zugriff auf den MBeanServer</title>
+<abstract>Der Tomcat managt seine Objekte mittels des integrierten MBeanServers. Dieser Artikel beschreibt, wie sie den Zugriff auf diesen MBeanServer aktivieren können und wie Sie mit der MC4J-Konsole darauf zugreifen können.</abstract>
+<meta name="keywords">jmx remote mbean mbeanserver dorado tomcat</meta>
+<meta name="description">Beschreibt den Zugriff (auch remote) auf den MBeanServer des Tomcats</meta>
+<meta name="author">Thorsten Kamann</meta>
+</header>
+<body>
+<section id="N66714">
+<title>Konfiguration des Zugriffs auf den MBeanServer</title>
+<p>Sie haben die Möglichkeit während der Installation bzw. vor der Installation in der <code>Properties-Datei</code> den Port des Remote-Zugriffs festzulegen. In der Properties-Datei ist das der Eintrag</p>
+<p>
+<code>dorado.jmx.port</code>.</p>
+<p/>
+<p>Der Default-Wert für diesen Wert ist 0. Das bedeutet, dass der Zugriff auf den MbeanServer deaktiviert ist. Setzen Sie diesen Wert auf einen offenen Port (in diesem Artikel benutzen wir Port 8999).</p>
+<p/>
+<p>Wenn Sie nachträglich den Port ändern wollen, öffnen Sie die Launchkonfiguration</p>
+<p>$tomcat.base/conf/launch/launch-configuration.xml. Dort können Sie den Port konfigurieren.</p>
+<source>&lt;properties name="parameter" ...&gt;<br/>[...]<br/>&lt;property name="-Dcom.sun.management.jmxremote.port" value="PORT"/&gt;<br/>[...]<br/>&lt;/parameter&gt;</source>
+<p/>
+<p>Geben Sie dort den gewünschten Port ein und starten Sie den Tomcat neu. Ab sofort ist die Management-Konsole erreichbar.</p>
+<p/>
+<p/>
+</section>
+<section id="N66777">
+<title>Zugriff mittels jConsole</title>
+<p>Wenn Sie das Java5 SDK installiert haben, dann gibt es im <code>$JAVA_HOME/bin</code>-Verzeichnis das Programm <code>jConsole</code>. Dies ist eine kleine und einfache Konsole, mit der Sie auf den MbeanServer des Tomcats zugreifen können.</p>
+<p/>
+<p>Wenn Sie die <code>jConsole</code> gestartet haben, wird Ihnen direkt der Verbindungsdialog angezeigt. Dort wählen Sie den Tab <strong>Remote</strong>.</p>
+<p/>
+<p>
+<img src="../images/jmx/jc001.png" alt="Grafik1"/>
+</p>
+<p>Geben Sie dort den Hostnamen oder IP-Adresse des Servers an, auf dem Tomcat installiert ist. Für den Port geben Sie den konfigurierten Port und User Name und Passwort sind die Daten für den Admin-Account (Default: admin/admin).</p>
+<p>Nach dem Klick auf Connect haben Sie vollen Zugriff auf den MbeanServer.</p>
+<p/>
+<p>
+<img src="../images/jmx/jc002.png" alt="Grafik2"/>
+</p>
+<p/>
+</section>
+<section id="N66856">
+<title>Zugriff mittels MC4J</title>
+<p>MC4J ist eine sehr leistungsfähige JMX-Console. Mit ihr sind Sie in der Lage mehrere Server gleichzeitig zu konnektieren und zum Ausführen brauchen Sie nur ein JRE installiert haben.</p>
+<p>Nach dem <a class="fork" href="http://mc4j.org/confluence/display/MC4J/Download" title="Download MC4J">Download</a> und der Installation starten Sie MC4J.</p>
+<p/>
+<p/>
+<p/>
+<p/>
+<p/>
+<p/>
+<p/>
+<p/>
+<p/>
+<p/>
+<p>
+<img src="../images/jmx/mc001.png" alt="Grafik3"/>
+</p>
+<p>Nun konfigurieren Sie eine neue Verbindung, indem Sie oben links auf den Button <strong>Create Server Connection</strong> klicken.</p>
+<p/>
+<p>
+<img src="../images/jmx/mc002.png" alt="Grafik4"/>
+</p>
+<p>Es öffnet sich der Dialog für neue Serververbindungen. In der Auswahlbox wäheln Sie den Verbindungstyp JSR160. In die restlichen Felder tragen Sie diese Werte ein:</p>
+<table>
+<tr>
+<th>
+<p>Name</p>
+</th>
+<th>
+<p>Default</p>
+</th>
+<th>
+<p>Beschreibung</p>
+</th>
+</tr>
+<tr>
+<td>
+     <p>Name</p>
+    </td>
+<td>
+     <p>Tomcat</p>
+    </td>
+<td>
+     <p>Ein beliebiger Name für die Verbindung.</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>Initial Context Factory</p>
+    </td>
+<td>
+     <p>com.sun.jndi.rmi.registry.RegistryContextFactory</p>
+    </td>
+<td>
+     <p>Den Eintrag können Sie so lassen wie er ist.</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>Server-URL</p>
+    </td>
+<td>
+     <p>service:jmx:rmi:///jndi/rmi://[HOST]:[PORT]/</p>
+    </td>
+<td>
+     <p>Ersetzen Sie in dieser URL den Host und den Port.</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>Principle</p>
+    </td>
+<td>
+     <p>admin</p>
+    </td>
+<td>
+     <p>Der Benutzername für den Admin-Account.</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>Credential</p>
+    </td>
+<td>
+     <p/>
+    </td>
+<td>
+     <p>Das Passwort für den Admin-Account.</p>
+    </td>
+</tr>
+</table>
+<p/>
+<p>Der Dialog sieht dann in etwa so aus:</p>
+<p/>
+<p>
+<img src="../images/jmx/mc003.png" alt="Grafik5"/>
+</p>
+<p>Klicken Sie jetzt auf <strong>Next</strong>. Auf der folgenden Dialogseite baruchen Sie nichts zu ändern und Beenden Sie die Einrichtung einer Verbindung mit einem Klick auf <strong>Finish</strong>.</p>
+<p/>
+<p/>
+<p/>
+<p/>
+<p/>
+<p/>
+<p/>
+<p/>
+<p/>
+<p>
+<img src="../images/jmx/mc004.png" alt="Grafik6"/>
+</p>
+<p>Nun verbindet sich MC4J mit der Tomcat-Instanz. Nun können Sie mit MC4J und Tomcat arbeiten.</p>
+<p/>
+<p>
+<img src="../images/jmx/mc005.png" alt="Grafik7"/>
+</p>
+<p>Detailierte Informationen über MC4J finden Sie auf der <a class="fork" href="http://mc4j.org/" title="MC4J Webseite">MC4J Webseite</a>.</p>
+</section>
+<section id="N67256">
+<title>Probleme mit dem Remote-Zugang</title>
+<p>Wenn Sie versuchen auf den MbeanServer des Tomcats remote zuzugreifen kommt es bei Servern mit aktivierter Firewall zu Verbindungsproblemen. Das liegt daran, dass die Kommunikation zwischen Konsole (Client) und Server dynamisch auf alle Port verteil werden, d.h. Für jede Anfrage/Rückgabe wird der Port gewechselt. </p>
+<p>Abhilfe schafft hier nur die Deaktivierung der Firewall oder die Freigabe für den gesamten Portbereich für die Client-IP-Adresse.</p>
+<p/>
+</section>
+</body>
+</document>

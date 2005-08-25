@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<logging>
+	<handlers>
+		<handler
+			name="1catalina.org.apache.juli.FileHandler"
+			level="FINE"
+			directory="${catalina.base}/logs"
+			prefix="catalina."/>
+		<handler 
+			name="2localhost.org.apache.juli.FileHandler"
+			level="FINE"
+			directory="${catalina.base}/logs/Catalina/localhost"
+			prefix="localhost."/>
+		<handler
+			name="java.util.logging.ConsoleHandler"
+			formatter="java.util.logging.SimpleFormatter"/>
+	</handlers>
+	
+	<loggers>
+		<logger
+			name="org.apache.catalina.core.ContainerBase.[Catalina].[localhost]"
+			level="INFO"
+			handler="2localhost.org.apache.juli.FileHandler"/>
+	</loggers>
+</logging>

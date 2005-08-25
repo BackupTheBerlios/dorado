@@ -1,0 +1,263 @@
+<project
+	name="Tomcat Launcher"
+	basedir=".">
+
+	
+    <!-- ================================= 
+          target: start              
+         ================================= -->
+    <target name="start" 
+    	depends="-platform_name"
+    	description="--> Start the Tomcat-Server">
+        
+    	<antcall target="-transform-launcher"/>
+    	<antcall target="-transform-server-properties"/>
+    	<antcall target="-transform-logger"/>    	
+    	
+    	<condition property="acl_win32">
+    		<equals arg1="${platform.name}" arg2="win32" casesensitive="false"/>
+    	</condition>    	
+    	<antcall target="-set-acls-win32"/>
+    	
+    	<condition property="acl_unix">
+    		<not>
+    			<equals arg1="${platform.name}" arg2="win32" 
+    				casesensitive="false"/>
+			</not>
+    	</condition>    	
+    	<antcall target="-set-acls-unix"/>
+    	
+    	<condition property="shell.ext" value="bat">
+			<os family="dos"/>
+		</condition>
+    	<property name="shell.ext" value="sh"/>
+    	    	
+    	<property name="exec.path" location="../../bin"/>
+    	<exec 
+    		executable="${exec.path}/wrapper.${shell.ext}">
+    		<arg line="start"/>    	
+    	</exec>
+    </target>
+	
+	
+	
+    <!-- ================================= 
+          target: console              
+         ================================= -->
+    <target name="console" 
+    	depends="-platform_name" 
+    	description="--> Starts the Tomcat-Server in console mode">
+        
+    	<antcall target="-transform-launcher"/>
+    	<antcall target="-transform-server-properties"/>
+    	<antcall target="-transform-logger"/>
+    	
+    	<condition property="acl_win32">
+    		<equals arg1="${platform.name}" arg2="win32" casesensitive="false"/>
+    	</condition>    	
+    	<antcall target="set_acls_win32"/>
+    	
+    	<condition property="acl_unix">
+    		<not>
+    			<equals arg1="${platform.name}" arg2="win32" 
+    				casesensitive="false"/>
+			</not>
+    	</condition>    	
+    	<antcall target="-set-acls-unix"/>
+    </target>
+
+
+	
+	
+	
+    <!-- ================================= 
+          target: stop              
+         ================================= -->
+    <target name="stop" 
+    	depends="-platform_name" 
+    	description="--> Stops the Tomcat-Server">
+    	
+    	<antcall target="-transform-launcher"/>
+    	<antcall target="-transform-logger"/>
+    	
+    	<condition property="shell.ext" value="bat">
+			<os family="dos"/>
+		</condition>
+    	<property name="shell.ext" value="sh"/>
+    	
+    	<property name="exec.path" location="../../bin"/>
+    	<exec 
+    		executable="${exec.path}/wrapper.${shell.ext}">
+    		<arg line="stop"/>    	
+    	</exec>
+    	
+    	<delete dir="../../temp/launch" includeemptydirs="true"/>
+    	<delete dir="../../temp/logging" includeemptydirs="true"/>
+    </target>
+	
+	
+	
+    <!-- ================================= 
+          target: install-service              
+         ================================= -->
+    <target name="install-service" 
+    	depends="-platform_name" 
+    	description="--> Installs the service">
+        
+    	<antcall target="-transform-launcher"/>
+    	
+    	<condition property="install.script" value="wrapper.bat">
+    	 	<os family="dos"/>
+    	</condition>
+    	<property name="install.script" value="tomcat_service.sh"/>
+    	
+    	<property name="exec.path" location="../../bin"/>
+    	<exec 
+    		executable="${exec.path}/${install.script}">
+    		<arg line="install"/>
+    	</exec>
+    </target>
+
+
+    <!-- ================================= 
+          target: uninstall-service              
+         ================================= -->
+    <target name="uninstall-service" 
+    	depends="-platform_name" 
+    	description="--> Installs the service">
+        
+    	<antcall target="-transform-launcher"/>
+    	
+    	<condition property="install.script" value="wrapper.bat">
+    	 	<os family="dos"/>
+    	</condition>
+    	<property name="install.script" value="tomcat_service.sh"/>
+    	
+    	<property name="exec.path" location="../../bin"/>
+    	<exec 
+    		executable="${exec.path}/${install.script}">
+    		<arg line="uninstall"/>
+    	</exec>
+    </target>
+
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: -platform_name                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="-platform_name">
+		<description>
+    		Sets the name of the os
+    	</description>
+    	
+    	<condition property="pn" value="win32">
+    		<or>
+    			<os family="dos"/>
+    			<os family="windows"/>
+    			<os family="win9x"/>
+    		</or>
+    	</condition>
+    	
+    	<condition property="pn" value="solaris">
+    		<or>
+    			<os name="Solaris"/>
+    			<os name="SunOS"/>
+    		</or>
+    	</condition>
+    	
+    	<condition property="pn" value="linux">
+    		<or>
+    			<os name="Linux"/>
+    		</or>
+    	</condition>
+    	
+    	<condition property="pn" value="mac">
+			<or>
+				<os family="mac"/>
+			</or>
+		</condition>
+    	<property name="platform.name" value="${pn}"/>
+    </target>
+	
+	
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: -set-acls-win32                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="-set-acls-win32" if="acl_win32">
+    	
+    	<property name="exec.path" location="../../bin"/>
+    	<property name="acl.file" location="../../conf/jmxremote.password"/>
+    	
+    	<condition property="admin.name" value="Administratoren">
+    		<equals arg1="${user.language}" arg2="de" casesensitive="false"/>
+    	</condition>
+    	<property name="admin.name" value="administrators"/>
+    	
+    	<exec
+    		executable="${exec.path}\SetACL.exe">
+    		<arg line="-on &quot;${acl.file}&quot; -ot file -actn setprot -op &quot;dacl:p_nc;sacl:p_nc&quot; -actn clear -clr &quot;dacl,sacl&quot; -actn ace -ace &quot;n:${admin.name};p:read,write&quot;"/>
+    	</exec>
+    	<!--
+    	%_BASEDIR%\SetACL.exe -on "C:\Programme\dorado\1.0\tomcat\base\default\conf\jmxremote.password" -ot file -actn setprot -op "dacl:p_nc;sacl:p_nc" -actn clear -clr "dacl,sacl" -actn ace -ace "n:Administrators;p:read,write"
+		-->
+    </target>
+
+	
+	
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: -set-acls-unix                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="-set-acls-unix" if="acl_unix">
+    	<chown file="../../conf/jmxremote.password" 
+    		owner="${user.name}"
+    		verbose="true"/>
+    	
+    	<chmod perm="go-rwx" 
+    	    verbose="true" 
+    		file="../../conf/jmxremote.password"/>
+    </target>
+
+
+	
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: -transform-launcher                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="-transform-launcher">
+    	<mkdir dir="../../temp/launch"/>
+    	<xslt 
+    		in="launch-configuration.xml"
+    	   	out="../../temp/launch/launch-configuration.properties"
+    	    style="launch-configuration2wrapper.xsl"
+    	    force="true">
+    	    <param name="os" expression="${platform.name}"/>
+    	</xslt>
+    </target>
+
+
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: -transform-logger                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="-transform-logger">
+    	<mkdir dir="../../temp/logging"/>
+    	<xslt 
+			in="../logging/logging.xml"
+		   	out="../../temp/logging/logging.properties"
+		    style="../logging/logging2properties.xsl"
+		    force="true">
+		</xslt>
+    </target>
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: -transform-server-properties                   
+         - - - - - - - - - - - - - - - - - -->
+    <target name="-transform-server-properties">
+    	<mkdir dir="../../temp/launch"/>
+    	<xslt 
+			in="../server-properties.xml"
+		   	out="../../temp/launch/server-properties.properties"
+		    style="../launch/server-properties2properties.xsl"
+		    force="true">
+		</xslt>
+    </target>
+
+</project>

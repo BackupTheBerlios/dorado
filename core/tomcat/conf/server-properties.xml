@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<properties>
+	<property-set name="package.access">
+		<item value="sun."/>
+		<item value="org.apache.catalina."/>
+		<item value="org.apache.coyote."/>
+		<item value="org.apache.tomcat."/>
+		<item value="org.apache.jasper."/>
+		<item value="sun.beans."/>
+	</property-set>
+	
+	<property-set name="package.definition">
+		<item value="sun."/>
+		<item value="java.,org.apache.catalina."/>
+		<item value="org.apache.coyote."/>
+		<item value="org.apache.tomcat."/>
+		<item value="org.apache.jasper."/>
+	</property-set>
+	
+	<property-set name="common.loader">
+		<item value="${catalina.home}/common/classes"/>
+		<item value="${catalina.home}/common/i18n/*.jar"/>
+		<item value="${catalina.home}/common/endorsed/*.jar"/>
+		<item value="${catalina.home}/common/lib/*.jar"/>
+	</property-set>
+	
+	<property-set name="server.loader">
+		<item value="${catalina.home}/server/classes"/>
+		<item value="${catalina.home}/server/lib/*.jar"/>
+	</property-set>
+	
+	<property-set name="shared.loader">
+		<item value="${catalina.base}/shared/classes"/>
+		<item value="${catalina.base}/shared/lib/*.jar"/>
+	</property-set>
+	
+	<property name="tomcat.util.buf.StringCache.byte.enabled"
+		value="true"/>	
+	
+</properties>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<launch-configuration>
+	<properties type="set">
+		<property name="HOMEDIR" value="@dorado.tomcat.home@"/>
+		<property name="BASEDIR" value="@dorado.tomcat.base@"/>
+		<property name="BINDIR" value="%BASEDIR%/bin"/>
+		<property name="CONFDIR" value="%BASEDIR%/conf"/>
+		<property name="LOGDIR" value="%BASEDIR%/logs"/>
+		<property name="ENDORSEDDIR" value="%BASEDIR%/common/endorsed"/>
+		<property name="SERVERDIR" value="%HOMEDIR%/server"/>
+		<property name="TMPDIR" value="%BASEDIR%/temp"/>
+	</properties>
+	
+	<properties name="runtime">
+		<property name="java.command" value="@java.home@/bin/java"/>
+		<property name="java.mainclass" 
+			value="org.tanukisoftware.wrapper.WrapperStartStopApp"/>
+		<property name="java.initmemory" value="@dorado.memory.min@"/>
+		<property name="java.maxmemory" value="@dorado.memory.max@"/>
+		<property name="java.library.path.append_system_path" 
+			value="true"/>
+	</properties>
+	
+	<properties name="application" count="true" basename="app.parameter">
+		<property value="org.apache.catalina.startup.Bootstrap"/>
+		<property value="1"/>
+		<property value="start"/>
+		<property value="org.apache.catalina.startup.Bootstrap"/>
+		<property value="true"/>
+		<property value="1"/>
+		<property value="stop"/>
+	</properties>
+	
+	<properties name="classpath" count="true" basename="java.classpath">
+		<property value="%SERVERDIR%/lib/wrapper.jar"/>
+		<property value="%BINDIR%/bootstrap.jar"/>
+	</properties>
+	
+	<properties name="native_libraries" count="true" 
+		basename="java.library.path">
+		<property value="%SERVERDIR%/lib"/>
+	</properties>
+
+	<properties name="parameter" count="true" basename="java.additional">
+		<property value="-Djava.endorsed.dirs=%ENDORSEDDIR%"/>
+		<property value="-Dcatalina.base=%BASEDIR%"/>
+		<property value="-Dcatalina.home=%HOMEDIR%"/>
+		<property value="-Djava.io.tmpdir=%TMPDIR%"/>
+		<property value="-Dcatalina.config=file://%TMPDIR%/launch/server-properties.properties"/>
+		<property 
+			value="-Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager"/>
+		<property 
+			value="-Djava.util.logging.config.file=%TMPDIR%/logging/logging.properties"/>
+		<property value="-Djava.awt.headless=true"/>
+		<property value="-Dfile.encoding=iso-8859-1"/>
+		<property value="-Dcom.sun.management.jmxremote"/>
+		<property value="-Dcom.sun.management.jmxremote.port=@dorado.jmx.port@"/>
+		<property value="-Dcom.sun.management.jmxremote.ssl=false"/>
+		<property value="-Dcom.sun.management.jmxremote.authenticate=true"/>
+		<property 
+			value="-Dcom.sun.management.jmxremote.password.file=%CONFDIR%/jmxremote.password"/>
+		<property 
+			value="-Dcom.sun.management.jmxremote.access.file=%CONFDIR%/jmxremote.access"/>
+	</properties>
+	
+	<properties name="logging">
+		<property name="console.format" value="PM"/>
+		<property name="console.loglevel" value="INFO"/>
+		<property name="logfile" value="%LOGDIR%/wrapper.log"/>
+		<property name="logfile.format" value="LPTM"/>
+		<property name="logfile.loglevel" value="INFO"/>
+		<property name="logfile.maxsize" value="2m"/>
+		<property name="logfile.maxfiles" value="1"/>
+		<property name="syslog.loglevel" value="none"/>
+	</properties>
+	
+	<properties name="system">
+		<property name="console.title" value="@dorado.name@"/>
+		<property name="ntservice.name" value="@dorado.name.service@">
+			<os name="win32"/>
+		</property>
+		<property name="ntservice.displayname" value="@dorado.name@">
+			<os name="win32"/>
+		</property>
+		<property name="ntservice.description" value="@dorado.description@">
+			<os name="win32"/>
+		</property>
+		<property name="ntservice.load_order_group" value="WebServices">
+			<os name="win32"/>
+		</property>
+		<property name="ntservice.starttype" value="AUTO_START">
+			<os name="win32"/>
+		</property>
+	</properties>
+</launch-configuration>
