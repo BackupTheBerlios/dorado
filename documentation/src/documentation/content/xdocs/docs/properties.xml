@@ -9,7 +9,7 @@
 <meta name="author"/>
 </header>
 <body>
-<section id="N66683">
+<section id="N66650">
 <title>Konfigurationseinstellungen</title>
 <table>
 <tr>
@@ -157,6 +157,17 @@
 </tr>
 <tr>
 <td>
+     <p>dorado.https.port</p>
+    </td>
+<td>
+     <p>8443</p>
+    </td>
+<td>
+     <p>Der HTTPS-Port des integrierten HTTPS-Konnektors.</p>
+    </td>
+</tr>
+<tr>
+<td>
      <p>dorado.ajp.port</p>
     </td>
 <td>
@@ -175,6 +186,17 @@
     </td>
 <td>
      <p>Der Port, mit dem Sie sich mit dem MBeanServer des Tomcats verbinden können.<br/>Der Wert <code>0</code> deaktiviert den Zugriff auf den MBeanServer.</p>
+    </td>
+</tr>
+<tr>
+<td>
+     <p>dorado.key.cn<br/>dorado.key.ou<br/>dorado.key.o<br/>dorado.key.l<br/>dorado.key.st<br/>dorado.key.c</p>
+    </td>
+<td>
+     <p>Tomcat-Server<br/>Development-Section<br/>Company<br/>City<br/>State<br/>DE</p>
+    </td>
+<td>
+     <p>Dies sind die Angaben, die Sie für das Test-SSL-Zertifikat machen können. Dies ist notwendig um den HTTPS-Konnektor zu benutzen.</p>
     </td>
 </tr>
 </table>
