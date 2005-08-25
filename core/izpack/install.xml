@@ -19,7 +19,7 @@
   			value="@project.tomcat.version@"/>
   	</variables>
     
-    <guiprefs width="640" height="480" resizable="no">
+    <guiprefs width="640" height="500" resizable="no">
     	<laf name="looks">
     		<os family="windows"/>
         	<param name="variant" value="extwin"/>
@@ -51,6 +51,7 @@
         <panel classname="InfoPanel"/>
         <panel classname="LicencePanel"/>
         <panel classname="TargetPanel"/> 
+        <panel classname="UserInputPanel"/>
         <panel classname="UserInputPanel"/>
         <panel classname="UserInputPanel"/>
         <panel classname="InstallPanel"/>
