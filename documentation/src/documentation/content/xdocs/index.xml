@@ -17,7 +17,13 @@
 <p>Alles das bietet der Dorado-Installer:</p>
 <ul>
 <li>
-    <p>die aktuellste verfügbare Tomcat-Version (zur Zeit 5.5.10)</p>
+    <p>die aktuellste verfügbare Tomcat-Version (zur Zeit 5.5.11)</p>
+   </li>
+<li>
+    <p>Zugriff auf den MbeanServer mit externen Tools</p>
+   </li>
+<li>
+    <p>Konfigurationen sind ausschliesslich in XML</p>
    </li>
 <li>
     <p>Systemintegration mit dem <a class="fork" href="http://wrapper.sourceforge.net/" title="Java Service-Wrapper">Java Service-Wrapper</a> </p>
@@ -35,9 +41,17 @@
 <p/>
 <p/>
 </section>
-<section id="N67016">
+<section id="N67030">
 <title>Aktuelle Neuigkeiten</title>
-<section id="N67021">
+<section id="N67035">
+<title>September 2005</title>
+<ul>
+<li>
+    <p>Dorado 1.1 veröffentlicht [<a href="downloads.html" title="Download Dorado-Installer Version 1.0">Download</a>]<br/>Das erste Final-Release ist fertig. In diesem Release sind schon alle Basis Features vorhanden. Es basiert noch auf dem Tomcat 5.5.11-alpha. Sobald die fertige 5.5.10 veröffentlicht wird, wird auch der Dorado-Installer aktualisiert.<br/>- <a href="changes.html" title="Changelog">Changelog</a> </p>
+   </li>
+</ul>
+</section>
+<section id="N67071">
 <title>August 2005</title>
 <ul>
 <li>
@@ -45,7 +59,7 @@
    </li>
 </ul>
 </section>
-<section id="N67059">
+<section id="N67107">
 <title>Juli 2005</title>
 <ul>
 <li>
