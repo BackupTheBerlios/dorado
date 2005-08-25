@@ -48,6 +48,8 @@ soll.
 	</str>
 	<str id="panel1.field5.label"
 		txt="HTTP-Port:"/>
+	<str id="panel1.field5.1.label"
+		txt="HTTPS-Port:"/>
 	<str id="panel1.field6.description">
 Hier können Sie den Port angeben, mit dem Sie auf den MBeanServer
 des Tomcats zugreifen können. Geben Sie 0 ein, um diese Funktionalität 
@@ -58,4 +60,26 @@ zu deaktivieren.
 		
 	<str id="port.validator" 
 		txt="Der Port wird bereits benutzt. Wählen Sie einen anderen Port."/>
+		
+	<str id="panel2.title" 
+		txt="SSL-Key Generierung"/>
+	<str id="panel2.field1.description">
+Geben Sie hier die Daten ein, die Sie für den Test-SSL-Key verwenden möchten.
+Bedenken Sie, dass der generierte Key nur zum test gedacht ist. Für einen 
+zertifizierten Key müssen Sie sich ein Zertifikat bei den bekannten 
+Trustcentern besorgen.
+	</str>
+	<str id="panel2.field1.label"
+		txt="Vor- und Nachname:"/>
+	<str id="panel2.field2.label"
+		txt="Name der Abteilung:"/>
+	<str id="panel2.field3.label"
+		txt="Firmenname:"/>
+	<str id="panel2.field4.label"
+		txt="Stadt:"/>
+	<str id="panel2.field5.label"
+		txt="Bundesland:"/>
+	<str id="panel2.field6.label"
+		txt="Länderkürzel:"/>
+		
 </langpack>
