@@ -26,7 +26,32 @@
 	</contexts>
 
 	<changes>
-		<release version="1.0.1" date="Sept. 2005">
+		<release version="1.1" date="Sept. 2005">
+			<action dev="thorque"
+				context="tomcat"
+				type="add">
+				<code>catalina.properties</code> removed and replaced with 
+				<code>server-properties.xml</code>.
+			</action>
+			<action dev="thorque"
+				context="tomcat"
+				type="add">
+				Adding a new folder <code>conf/logging</code> containing all
+				conffiles and XSL-Sytlesheets used for the logger configuration.
+			</action>
+			<action dev="thorque"
+				context="tomcat"
+				type="add">
+				A new folder <code>conf/launch</code> was created. It contains
+				all files using by the start-, stop-, console-calls.		
+			</action>
+			<action dev="thorque"
+				context="tomcat"
+				type="add">
+				The start of the tomcat will be executed with an ANT-Script at now.
+				With this script you can easily change/extends the start-, stop- 
+				and console-call.
+			</action>
 			<action dev="thorque"
 				context="tomcat"
 				type="add">
